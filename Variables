@@ -1,0 +1,91 @@
+        //Question :- 01 : Declare a string variable called name and assign your name to it. Print it. 
+
+        string s = "bhavika";
+        Console.WriteLine($"1.   {s}");
+        Console.ReadLine();
+
+        //Question :- 02 : Declare two int variables, assign values to them, and print their sum.
+
+        double A = 7.8, B = 6.8;
+        Console.WriteLine($"2.   {A + B}");
+        Console.ReadLine();
+
+        //Question :- 03 :  Swapping Two Numbers Using a Temporary Variable
+
+        int a = 3, b = 0, temp = 0;
+        Console.WriteLine($"3.   BEFORE SWAP {a} {b} without arithmethic operation");
+        temp = a;
+        a = b;
+        b = temp;
+        Console.WriteLine($"     AFTER SWAP : {a} {b}");
+        Console.ReadLine();
+
+        //Question :- 04 : Swap two numbers without using a third variable (using arithmetic operations).
+
+        int p = 4, q = 1;
+        Console.WriteLine($"4.   BEFORE SWAP {p} {q} with arithmethic operation");
+        p = p + q;
+        q = p - q;
+        p = p - q;
+        Console.WriteLine($"     AFTER SWAP : {p} {q}");
+        Console.ReadLine();
+
+        //Question :- 05 : Declare and initialize three variables (int, double, and char) in a single line, and print their values.
+
+        int i = 14; double d = 6.3; char c = 'B'; string S = "havika";
+        Console.WriteLine($"5.   {i},{d},{c} {S}");
+        Console.ReadLine();
+
+        //Question :- 06 :  Declare a double variable and convert it to int. Show the original and converted values.
+
+        double D = 14.5;
+        int I = Convert.ToInt16(D);
+        Console.WriteLine($"6.   {I}");
+        Console.ReadLine();
+
+        //Question :- 07 : Use var to declare a variable that holds a string and print it. Try changing it to an int afterward and observe what happens.
+
+        var v = "bhavika";
+        Console.WriteLine($"7.1. {v}");
+        //int i1 = Convert.ToInt32(v);
+        Console.WriteLine($"7.2. converting string to int it will get expection error");
+        Console.ReadLine();
+
+        //Question :- 08 : Declare a constant variable pi with value 3.14 and print it.
+
+        const double pi = 3.14;
+        Console.WriteLine($"8.   pi = {pi}");
+        Console.ReadLine();
+
+    //Question: -09 : Show an example of a local variable and a global variable(within class), and how their scopes differ.
+    // LOCAL VARIABLE(only accessible within this method); GLOBAL VARIABLE(accessible throughout the class) ; SCOPES(The region of the code where a variable can be accessed or used.)
+
+       public class variable
+    {
+        int global = 4;
+        public void scopes()
+        {
+            int local = 1;
+            Console.WriteLine($"9.   localvariable : {local}");
+            Console.WriteLine($"     globalvariable : {global}");
+        }
+        public void another()
+        {
+            Console.WriteLine($"     anothervariable : {global}");
+        }
+        public static void Main()
+        {
+            variable am = new variable();
+        am.scopes();
+        am.another();
+        
+        // Question :- 10 :  Accept a number from the user using Console.ReadLine(), convert it to int, and print its square.
+
+        Console.Write("10.  ");
+        Console.Write("enter the number :  ");
+        string input = Console.ReadLine(  );
+        int n = Convert.ToInt32(input);
+        int square = n * n;
+        Console.Write($"     = {square}");
+    }
+}
