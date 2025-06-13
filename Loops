@@ -1,0 +1,142 @@
+//Question :- 01 : Use a for loop to print numbers from 1 to 10.
+
+using System.Runtime.Intrinsics.Arm;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+
+Console.Write("01. print 1 to 10 numbers: ");
+int n = 10;
+for (int i = 0;i<=n;i++)
+    Console.Write($"{i}, ");
+Console.WriteLine();
+Console.ReadLine();
+
+//Question :- 02 :  Accept a number from the user and print the sum of numbers from 1 to that number using a while loop.
+
+int n2=10, i1=0;
+int sum = 0;
+Console.Write("02. ");
+while (i1<n2)
+{
+    sum += i1;
+    i1++;
+}
+Console.WriteLine($"Sum of 1to 10 numbers : {sum}");
+Console.ReadLine();
+
+//Question :- 03 : Write a program using a for loop to find the factorial of a given number.
+
+int i2 = 10;
+int fact =1 ;
+Console.Write("03. ");
+for (int i3 = 1; i3<=i2;i3++)
+{
+    fact *= i3;
+
+}
+Console.WriteLine($"Factorial of {i2} : {fact}");
+Console.ReadLine();
+
+//Question :- 04 : Accept a number and use a while loop to reverse its digits (e.g., 123 → 321).
+
+int i4 = 12345;
+int rev = 0;
+Console.Write("04. ");
+while (i4>0)
+{
+    int digit = i4 % 10;
+    rev =rev*10 + digit;
+    i4 = i4 / 10;
+}
+Console.WriteLine($"Reverse of 12345 : {rev}");
+Console.ReadLine();
+
+//Question :- 05 : Use a for loop to print all even numbers from 1 to 50.
+
+int i5 = 50;
+Console.Write("05. Even numbers 1 to 50: ");
+
+for (int i6 = 0; i6 <= i5; i6++)
+{
+    if (i6 % 2 == 0)
+    {
+        Console.Write($"{i6},");
+    }
+}
+Console.ReadLine();
+
+//Question :- 06 : Accept a number and use a loop to print its multiplication table (e.g., 5 × 1 = 5 ... 5 × 10 = 50).
+
+int i7 = 5;
+Console.WriteLine("06. Mulltiplication table : ");
+for (int i8 = 0; i8 <= 10; i8++)
+    Console.WriteLine($"    {i7} x {i8} = {i7 * i8} ");
+Console.ReadLine();
+
+//Question :- 07 : Accept a number and use a loop to calculate the sum of its digits (e.g., 123 → 1+2+3 = 6).
+
+int i9 = 57395,sum1 =0;
+Console.Write("07. sum of its digits : ");
+while (i9!=0)
+{
+    int digit = i9 % 10;
+    sum1 = sum1 + digit;
+    i9 = i9 / 10;
+}
+Console.WriteLine(sum1);
+Console.ReadLine();
+
+//Question :- 08 : Write a program using a while loop to count how many digits are in a number.
+
+int i10 = 346842;
+int count = 0;
+Console.Write("08. ");
+if (i10 == 0)
+{
+    count = 1;
+}
+else
+{
+    while (i10 > 0)
+    {
+        i10 = i10 / 10;
+        count++;
+    }
+}
+Console.WriteLine("Total digits: " + count);
+Console.ReadLine();
+
+//Question :- 09 : Use nested for loops to print the following triangle pattern
+
+int i11 = 5;
+Console.Write("09. Triangle Pattern : ");
+for (int j= 0;j <= i11;j++)
+{
+    Console.Write($"{"     "}");
+    for (int k= 0;k < j;k++)
+    {
+        Console.Write("*");
+    }
+    Console.WriteLine();
+}
+Console.ReadLine();
+
+//Question :- 10 :  Use a do-while loop to keep accepting numbers from the user and print them until the user enters 0.
+
+int i12;
+Console.WriteLine("10. ");
+do
+{
+    Console.Write("    enter the number and press 0 to end the program : ");
+    i12 = Convert.ToInt32(Console.ReadLine());
+
+    if (i12 != 0)
+    {
+        Console.Write($"{"     "}");
+        for (int k1= 0;k1 <= i12;k1++)
+        Console.Write($"{k1} ");
+        Console.WriteLine();
+    }
+}
+while (i12 != 0);
+        Console.WriteLine("    program ended");
+Console.ReadLine();
