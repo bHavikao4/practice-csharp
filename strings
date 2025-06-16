@@ -1,0 +1,217 @@
+//Question :- 01 : Accept a string from the user and print its reverse
+
+Console.Write("01. ");
+Console.WriteLine("Print its reverse ");
+Console.Write("    Enter the string : ");
+string s = Console.ReadLine();
+string rev = string.Empty;
+for (int i = s.Length-1;i>=0;i--)
+{
+    rev += s[i];
+}
+Console.WriteLine($"    Reverse string : {rev}");
+Console.WriteLine(" ");
+Console.ReadLine();
+
+//Question :- 02 :   Accept a string and count how many vowels and consonants it contains
+
+Console.Write("02. ");
+Console.WriteLine("Count in vowels and consonants ");
+Console.Write("    Enter the string : ");
+string s1 = Console.ReadLine();
+int Vc= 0,Cc=0;
+foreach(char c in s1)
+{
+    if ("aeiouAEIOU".Contains(c))
+    {
+        Vc++;
+    }
+    else
+    {
+        Cc++;
+    }
+}
+Console.WriteLine($"    vowels count  : {Vc}");
+Console.WriteLine($"    consonant count : {Cc}");
+Console.WriteLine(" ");
+Console.ReadLine();
+
+//Question :- 03 : Accept a string and check whether it is a palindrome (reads the same backward as forward)
+
+Console.Write("03. ");
+Console.WriteLine("check whether it is a palindrome");
+Console.Write("    Enter the string : ");
+string s2 = Console.ReadLine();
+string re = string.Empty;
+foreach (char c1 in s2)
+{
+    re = c1 + re;
+
+}
+Console.Write($"    {s2} is ");
+Console.Write((re == s2) ? "a palindrome" : "not a palindrome");
+Console.WriteLine(" ");
+Console.ReadLine();
+
+//Question :- 04 : Accept a string and remove all spaces without using .Replace() method.
+
+Console.Write("04. ");
+Console.WriteLine(" remove all spaces ");
+Console.Write("    Enter the string : ");
+string s3 = Console.ReadLine();
+string result = " ";
+foreach (char c2 in s3)
+{
+    if(c2 != ' ')
+    {
+        result += c2;
+    }
+}
+Console.WriteLine($"    Remove all spaces : {result}");
+Console.WriteLine(" ");
+Console.ReadLine();
+
+//Question :- 05 :Accept a sentence and count how many words it contains.
+Console.Write("05. ");
+Console.WriteLine("count how many words");
+Console.Write("    Enter the string : ");
+string s4 = Console.ReadLine();
+int count = 0;
+bool word = false;
+foreach (char c3 in s4)
+{
+    if(c3!=' ')
+    {
+        if (!word)
+        {
+            count++;
+            word = true;
+        }
+    }
+    else
+    {
+        word = false;
+    }
+}
+Console.WriteLine($"    word count : {count}");
+Console.WriteLine("");
+Console.ReadLine();
+
+//Question :- 06 : Accept a string and convert it to both uppercase and lowercase using built-in methods
+
+Console.Write("06. ");
+Console.WriteLine("convert it to both uppercase and lowercase ");
+Console.Write("    Enter the string : ");
+string s5 =Console.ReadLine();
+string l = s5.ToLower();
+string U = s5.ToUpper();
+Console.WriteLine($"    Lower case : {l}");
+Console.WriteLine($"    Upper case : {U}");
+Console.WriteLine(" ");
+Console.ReadLine();
+
+//Question :- 07 : Accept a string and print all duplicate characters in it
+
+Console.Write("07. ");
+Console.WriteLine("print all duplicate characters ");
+Console.Write("    Enter the string : ");
+string s6 = Console.ReadLine();
+
+Dictionary<char,int> dup = new Dictionary<char,int>();
+foreach (char C4a in s6)
+{
+    if (char.IsWhiteSpace(C4a)) continue;
+    if (dup.ContainsKey(C4a))
+        dup[C4a]++;
+    else 
+    { 
+        dup[C4a] = 1; 
+    }
+}
+Console.WriteLine("    duplicate string and value : ");
+foreach (var kvp in dup)
+{
+
+    if (kvp.Value > 1)
+    { 
+        Console.WriteLine($"    {kvp.Key}: {kvp.Value}");
+    }
+}
+Console.WriteLine("");
+Console.ReadLine();
+
+//Question :- 08 : Accept a string and display the frequency of each character
+
+Console.Write("08. ");
+Console.WriteLine("display the frequency of each character ");
+Console.Write("    Enter the string : ");
+string s7 = Console.ReadLine();
+Console.WriteLine("    frequency of character ");
+s7 = s7.Replace(" ", string.Empty);
+while (s7.Length > 0)
+{
+    Console.Write($"    {s7[0]}  :  ");
+    int count1 = 0;
+    for (int i2 = 0; i2 < s7.Length; i2++)
+    {
+        if (s7[0] == s7[i2])
+        {
+            count1++;
+        }
+    }
+    Console.WriteLine(count1);
+     s7 = s7.Replace(s7[0].ToString(),string.Empty);
+}
+Console.WriteLine(" ");
+Console.ReadLine();
+
+//Question :- 09 : Accept two strings from the user and compare them without using == or .Equals()
+
+Console.Write("09. ");
+Console.WriteLine("2 string  compare ");
+Console.Write("    Enter the 1st string :  ");
+string s8 = Console.ReadLine () ;
+Console.Write("    Enter the 2nd string : ");
+string s9 = Console.ReadLine();
+bool bo = true;
+if(s8.Length!=s9.Length)
+{
+    bo = false;
+}
+else
+{
+    for(int i = 0; i < s8.Length; i++)
+        if(s8[i] != s9[i])
+            { 
+            bo = false; 
+            break; 
+        }
+}
+if(bo)
+{
+    Console.WriteLine($"    {s8} & {s9} : are string is equal ");
+}
+else
+{
+    Console.WriteLine($"    {s8} & {s9} : string is not equal ");
+}
+Console.WriteLine(" ");
+Console.ReadLine(); 
+
+//Question :- 10 : Accept a string and remove all duplicate characters, keeping only the first occurrence
+
+Console.Write("10. ");
+Console.WriteLine("remove all duplicate characters ");
+Console.Write("    Enter the string : ");
+string s10 = Console.ReadLine();
+string c4 = string.Empty;
+for (int i1 = 0; i1 < s10.Length; i1++)
+{
+    if (!c4.Contains(s10[i1]))
+    {
+        c4 += s10[i1];
+    }
+}
+Console.WriteLine($"    non duplicate string : {c4}");
+Console.WriteLine(" ");
+Console.ReadLine();
