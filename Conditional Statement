@@ -1,0 +1,244 @@
+//Question :- 01 : Accept a number from the user and check whether it is positive, negative, or zero using if-else.
+
+Console.Write("01. ");
+Console.WriteLine("check wheather it is positive,negative and zero ");
+Console.Write("    enter the number : ");
+int i = Convert.ToInt32(Console.ReadLine());
+if(i < 0)
+{
+    Console.WriteLine("    negative");
+}
+else if (i > 0)
+{
+    Console.WriteLine("    positive");
+}
+else
+{
+    Console.WriteLine("    is zero");
+}
+Console.ReadLine();
+
+//Question :- 02 : Accept a number and check if it's even or odd using the modulo operator %
+
+Console.Write("02. ");
+Console.WriteLine("check if its even or odd ");
+Console.Write("    enter the number : ");
+int i1 = Convert.ToInt32(Console.ReadLine());
+if(i1%2==0)
+{
+    Console.WriteLine("    even");
+}
+else
+{
+    Console.WriteLine("    odd number");
+}
+Console.ReadLine();
+
+//Question :- 03 : Accept three numbers and find the largest using if-else if-else.
+
+Console.Write("03. ");
+Console.WriteLine("the largest using if-else if-else");
+Console.Write("    enter the 1st number : ");
+int i2 = Convert.ToInt32(Console.ReadLine());
+Console.Write("    enter the 2nd number : ");
+int ia2 = Convert.ToInt32(Console.ReadLine());
+Console.Write("    enter the 3rd number : ");
+int ib2 = Convert.ToInt32(Console.ReadLine());
+
+if(i2>=ia2  && i2>=ib2)
+{
+    Console.WriteLine("    1st is greater ");
+}
+else if(ia2>=i2 && ia2>=ib2 )
+{
+    Console.WriteLine("    2nd is  greater");
+}
+else
+{
+    Console.WriteLine("    3rd is greater ");
+}
+Console.ReadLine();
+
+//Question :- 04 : Accept a student's marks and assign a grade:
+
+Console.Write("04. ");
+Console.WriteLine(" a student's marks and assign a grade ");
+Console.Write("    Enter the marks : ");
+int i3 = Convert.ToInt32(Console.ReadLine());
+if(i3 <= 100 &&  i3 >= 90)
+{
+    Console.WriteLine("    A grade ");
+}
+else if (i3 <=89 && i3>= 75)
+{
+    Console.WriteLine("    B grade ");
+}
+else if (i3 <=74 && i3>=50)
+{
+    Console.WriteLine("    c grade ");
+}
+else if (i3 < 50)
+{
+    Console.WriteLine("    failed ");
+}
+Console.ReadLine();
+
+//Question :- 05 : Accept a year and check whether it's a leap year or not
+
+Console.Write("05. ");
+Console.WriteLine(" check whether it's a leap year or not ");
+Console.Write("    Enter The Number : ");
+int i4 = Convert.ToInt32(Console.ReadLine());
+if(i4 %4 ==0)
+{
+    Console.WriteLine("    Leap Year ");
+}
+else
+{
+    Console.WriteLine("    Not A Leap Year");
+}
+Console.ReadLine();
+
+//Question :- 06 : Accept a character and check whether it's a vowel or consonant. and print and count
+
+Console.Write("06. ");
+Console.WriteLine("check whether it's a vowel or consonant. and print and count ");
+Console.Write("    enter the string : ");
+string s = Console.ReadLine();
+int V = 0, C = 0;
+string V1 = " ", C1 = " ";
+foreach (char c1 in s)
+    if ("AEIOUaeiou".Contains(c1))
+    {
+        V++;
+        V1 += c1 + " ";
+
+    }
+    else
+    {
+        C++;
+        C1 += c1 + " ";
+    }
+
+Console.WriteLine($"    {V} vowels");
+Console.WriteLine($"    {V1} vowels");
+Console.WriteLine($"    {C} consonant");
+Console.WriteLine($"     {C1} consonants");
+
+char c2 = 'a';
+bool b = false;
+if ("aeiouAEIOU".Contains(c2))
+{
+    b = true;
+    Console.WriteLine($"     {c2} vowels");
+}
+else
+{
+    b = false;
+    Console.WriteLine($"     {c2} consonants");
+}
+Console.ReadLine();
+
+//Question :- 07 :Accept age from the user and print whether the person is eligible to vote (age >= 18)
+
+Console.Write("07. ");
+Console.WriteLine("check if  eligible to vote ");
+Console.Write("    enter the number : ");
+int i5 = Convert.ToInt32(Console.ReadLine());
+if(i5 >= 18)
+{
+    Console.WriteLine("    eligible to vote");
+}
+else if(i5 < 18)
+{
+    Console.WriteLine("    not eligible to vote ");
+}
+Console.ReadLine();
+
+//Question :- 08 : Accept a number (1–7) and print the corresponding weekday name using switch
+Console.Write("08. ");
+Console.WriteLine("weekday name using switch ");
+Console.Write("    Enter the day number : ");
+int day =Convert.ToInt32(Console.ReadLine());
+switch (day)
+{
+    case 0:
+        Console.WriteLine("    monday ");
+        break;
+    case 1: Console.WriteLine("    tuesday ");
+        break;
+    case 2: Console.WriteLine("    wednesday");
+        break;
+    case 3: Console.WriteLine("    thruesday ");
+        break;
+    case 4: Console.WriteLine("    friday ");
+        break;
+    case 5: Console.WriteLine("    saturday");
+        break;
+    case 6: Console.WriteLine("    sunday ");
+        break;
+        default:
+        Console.WriteLine("    number is not found ");
+        break;
+}
+Console.ReadLine();
+
+//Question :- 09 : Accept a character and check whether it is an uppercase letter, lowercase letter, or a digit using ASCII values and if-else
+
+Console.Write("09. ");
+Console.WriteLine("check whether it is an uppercase letter, lowercase letter, or a digit using ASCII values and if-else ");
+Console.Write("    enter the character : ");
+char ch = Convert.ToChar(Console.ReadLine());
+
+if (ch >= 65 && ch <= 90)
+{
+    Console.WriteLine("    its  upper case ");
+}
+else if (ch >= 97 && ch <= 122)
+{
+    Console.WriteLine("    its lower case ");
+}
+else if (ch >= 48 && ch <= 57)
+{
+    Console.WriteLine("    its digits ");
+}
+else
+{
+    Console.WriteLine("    special character ");
+}
+
+
+Console.Write("    enter the character : ");
+char ch1 = Convert.ToChar(Console.ReadLine());
+if (ch1>='A'&& ch1 <= 'Z')
+{
+    Console.WriteLine("    its upper case ");
+}
+else if (ch1>='a'&& ch1 <='z')
+{
+    Console.WriteLine("    its lower ");
+}
+else if(char.IsDigit(ch1))
+{
+    Console.WriteLine("    its digits");
+}
+else
+{
+    Console.WriteLine("    special character");
+}
+Console.ReadLine();
+
+
+//Question :- 10 : Accept two numbers and print the maximum using the ternary operator.
+
+Console.Write("10. ");
+Console.WriteLine("print the maximum using the ternary operator");
+Console.Write("    Enter the 1st number : ");
+int i6 = Convert.ToInt32(Console.ReadLine());
+Console.Write("    Enter the 2nd number : ");
+int i7 = Convert.ToInt32(Console.ReadLine());
+int max = (i6 > i7)? i6:i7 ;
+int min = (i6 < i7) ? i6 : i7;
+Console.WriteLine($"    Maximum Number {max}");
+Console.WriteLine($"    Minimum Number {min}");
+Console.ReadLine();
