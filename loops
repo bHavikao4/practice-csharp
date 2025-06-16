@@ -1,0 +1,188 @@
+//Question :- 01 : Write a program using a for loop to print numbers from 1 to 100
+
+Console.Write("01. ");
+Console.WriteLine("print numbers from 1 to 100 ");
+for (int i=1;i<= 100;i++)
+{
+    Console.Write($"{i} ");
+}
+Console.WriteLine(" ");
+Console.ReadLine();
+
+//Question :- 02 : Print numbers from 100 to 1 using a while loop(Reverse).
+
+Console.Write("02. ");
+Console.WriteLine("print numbers from 1 to 100 Reverse ");
+for (int i1 = 100; i1 >= 1; i1--)
+{
+    Console.Write($"{i1} ");
+}
+Console.WriteLine(" ");
+Console.ReadLine() ;
+
+//Question :- 03 : Accept a number N from the user and use a for loop to print the sum of even numbers from 1 to N.
+
+Console.Write("03. ");
+Console.WriteLine("print the sum of even numbers from 1 to N ");
+Console.Write("Enter the number : ");
+int N = Convert .ToInt32(Console.ReadLine());   
+for (int i2 = 0; i2 <= N; i2++)
+{
+    if( i2%2==0)
+    {
+        Console.Write($"{i2} ");
+    }
+}
+Console.WriteLine(" ");
+Console.ReadLine();
+
+//Question :- 04 : Use a loop to print all multiples of 5 between 1 and 50.
+
+Console.Write("04. ");
+Console.WriteLine("multiples of 5 between 1 and 50");
+int n = 50;
+for (int i3 = 0;i3<=n;i3++)
+{
+    if(i3%5==0)
+    {
+        Console.Write($"{i3} ");
+    }
+}
+Console.WriteLine(" ");
+Console.ReadLine();
+
+//Question :- 05 : Use a do-while loop to print odd numbers between 1 and 20
+
+Console.Write("05. ");
+Console.WriteLine("print odd numbers between 1 and 20 ");
+
+int i4 = 0;
+do
+{
+    if (i4 % 2 != 0)
+    {
+        Console.Write($"{i4} ");
+    }
+    i4++;
+}
+while (i4 <= 20);
+Console.WriteLine(" ");
+Console.ReadLine();
+
+//Question :- 06 : Accept a number and use a loop to count how many digits it has.
+
+Console.Write("06. ");
+Console.WriteLine("count how many digits ");
+int c = 123653;
+int count = 0;
+int temp = Math.Abs(c);
+if (temp == 0 )
+{
+    count = 1;
+}
+else
+{
+    while (temp > 0)
+    {
+        temp /= 10;
+        count++;
+    }
+}
+Console.Write($"     Count digits in number : {count}");
+Console.WriteLine(" ");
+Console.ReadLine ();
+
+//Question :- 07 : Accept a number and use a loop to calculate the sum of its digits (e.g., 456 → 4+5+6 = 15).
+
+Console.Write("07. ");
+Console.Write ("calculate the sum of its digits : ");
+int s = 1237659;
+int sum = 0;
+int temp1 =Math.Abs(s);
+if(temp1 == 0)
+{
+    temp1 = 1;
+}
+else
+{
+    while (temp1 >0)
+    {
+        int digit = temp1 % 10;
+        sum += digit;
+        temp1 /= 10;
+    }
+    Console.Write($"{sum}");
+}
+Console.WriteLine(" ");
+Console.ReadLine();
+
+//Question :- 08 :Use nested for loops to print the following pattern
+
+Console.Write("08. ");
+Console.WriteLine("pattern");
+int i5 = 5;
+for (int j = 0; j < i5; j++) 
+{
+    for (int k = 0; k <= j; k++)
+    {
+        Console.Write("*");
+    }
+    Console.WriteLine();
+}
+Console.WriteLine(" ");
+Console.ReadLine();
+
+//Question :- 09 : Accept a number and use a loop to check whether it is a prime number
+
+Console.Write("09. ");
+Console.Write("check whether it is a prime number : ");
+int ints = 20;
+bool b = false;
+for (int i6 = 2; i6 <= Math.Sqrt(ints); i6++)
+    if (ints % i6 == 0)
+    { b = true; }
+    else { 
+        b = false;
+    }
+Console.WriteLine(b ? "prime " : " not prime ");
+
+Console.Write("09a. ");
+Console.Write("print prime number : ");
+for (int i7 = 2; i7 <= ints; i7++)
+{
+    int cou = 0;
+    for (int j1 = 2; j1 <= i7 / 2; j1++)
+    {
+        if (i7 % j1 == 0)
+        {
+            cou++;
+        }
+    }
+    if(cou == 0&& i7!=0)
+    {
+        Console.Write($"{i7} ");
+    }
+}
+Console.WriteLine(" ");
+Console.ReadLine();
+
+//Question :- 10 :  Print the first N numbers in the Fibonacci series using a loop. (e.g., 0, 1, 1, 2, 3, 5, 8…)
+
+Console.Write("10. ");
+Console.WriteLine("Fibonacci series : ");
+int A = 0, B = 1, C;
+int f= 10;
+Console.Write($"fibonacci series : ");
+Console.Write($"    {A} ");
+Console.Write($"{B} ");
+for (int i8 = 0;i8 < f;i8++)
+{
+    C = A + B;
+    Console.Write($"{C}  ");
+    A = B;
+    B =C;
+}
+Console.WriteLine(" ");
+Console.ReadLine();
+
+
