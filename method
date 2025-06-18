@@ -1,0 +1,271 @@
+//Question :- 01 : Write a method called DisplayMessage that prints “Welcome to C# Methods!”. Call it from Main()
+
+class program
+{
+    //public  void display()
+    public static void display()
+    {
+        Console.WriteLine("welcome to c# ");
+    }
+    public static void Main()
+    {
+        //program obj = new program();         // Create an instance of the class
+        //obj.display();        // Call the non-static method using the instance
+        display();         // call the static method
+    }
+}
+
+//Question :- 02 : Create a method Add(int a, int b) that returns the sum of two numbers. Call it from Main() and display the result
+
+class program1
+    {
+        public static void add(int x, int y)
+        {
+            Console.WriteLine($"Add : {x + y}");
+        }
+        public static void Main()
+        {
+            int x = 5, y = 7;
+            add(x, y);
+            //int result = add(x,y);
+            //Console.WriteLine(result);
+        }
+    }
+
+//Question :- 03 : Create a method IsEven(int number) that returns true if the number is even, otherwise false.
+
+class program2
+    {
+        public static int IsEven(int x)
+        {
+            return x;
+        }
+        public static int IsOdd(int x)
+        {
+            return x;
+        }
+        public static void Main()
+        {
+            int x = 4;
+            if (x % 2 == 0)
+            {
+                Console.WriteLine($"{IsEven(x)} Even ");
+            }
+            else
+            {
+                Console.WriteLine($"{IsOdd(x)} Odd ");
+            }
+        }
+    }
+//Question :- 04 : Write a method Factorial(int n) that returns the factorial of a number using a loop
+
+class program3
+    {
+        public static void factorial(int x)
+        {
+            int fact = 1;
+            for (int i = 1; i <= x; i++)
+            {
+                fact *= i;
+            }
+            Console.WriteLine($"Factorial : {fact}");
+        }
+        public static void Main()
+        {
+            int x = 5;
+            factorial(x);
+        }
+    }
+
+//Question :- 05 : Create a method GetCurrentYear() that returns the current year (e.g., 2025) using DateTime.Now.
+
+class program4
+    {
+        public static int currentyear()
+        {
+            int x2 = DateTime.Now.Year;
+            return x2;
+        }
+        public static void Main()
+        {
+            int year = program4.currentyear();
+            Console.WriteLine($"Current year : {year}");
+        }
+
+    }
+
+//Question :- 06 : Create a method ReverseString(string input) that returns the reversed string.
+
+class program5
+    {
+        public static string reverse(string input)
+        {
+            string rev = string.Empty;
+            for (int i1 = input.Length - 1; i1 >= 0; i1--)
+            {
+                rev += input[i1];
+            }
+            return rev;
+        }
+        public void vowandcon(string input)
+        {
+            string V = " ", C = "";
+            foreach (char c in input)
+            {
+                if ("AEIOUaeiou".Contains(c))
+                {
+                    V += c + " ";
+
+                }
+                else
+                {
+                    C += c + " ";
+                }
+
+            }
+            Console.WriteLine($"vowels : {V}");
+            Console.WriteLine($"consonants : {C}");
+        }
+
+        public static void Main()
+        {
+            string s = "bhavika";
+            program5 obj = new program5();
+            string result = reverse(s);
+            Console.WriteLine($"Reverse : {result}");
+            obj.vowandcon(s);
+        }
+    }
+
+//Question :- 07 : Create overloaded methods Multiply(int a, int b) and Multiply(double a, double b). Call both versions in Main()
+
+class program6
+    {
+        public static int multiply(int a, int b)
+        {
+            return a * b;
+        }
+        public static double multiply1(double a, double b)
+        {
+            return a * b;
+        }
+        public static void Main()
+        {
+            int a = 5, b = 5;
+            Console.WriteLine($"multiply int : {multiply(a, b)}");
+            Console.WriteLine($"multiply double : {multiply1(a, b).ToString("f2")}");
+        }
+    }
+
+//Question :- 08 : Write a method IsPrime(int num) that returns true if the number is prime.
+
+class program7
+    {
+        public static bool IsPrime(int x)
+        {
+            if (x <= 1)
+                return false;
+            for (int i = 2; i <= Math.Sqrt(x); i++)
+            {
+                if (x % i == 0)
+                    return false;
+            }
+            return true;
+        }
+        public static void Main()
+        {
+            int x = 7;
+            bool b1 = IsPrime(x);
+            Console.WriteLine(b1 ? $"{x} is prime" : $"{x} is not prime");
+        }
+    }
+
+//Question :- 09 :  Write a method CountWords(string sentence) that returns the number of words in the string.
+
+class program8
+    {
+        public static string CountWord(string sentence)
+        {
+            int count = 0;
+            bool temp = string.IsNullOrEmpty(sentence);
+            if (temp.Equals(0))
+            {
+                count = 1;
+                //return "0"; // Return "0" if the input string is null or empty
+            }
+            else
+            {
+                foreach (char c in sentence)
+                {
+                    if (char.IsWhiteSpace(c))
+                    {
+                        count++;
+                    }
+                }
+            }
+            return count.ToString(); // Return the word count as a string
+        }
+        public static void Main()
+        {
+            string sentance = "bhavika sai rani ";
+            string count = CountWord(sentance);
+            Console.WriteLine($"count of words in sentence : {count}");
+
+        }
+    }
+//Question :- 10 : Create a method FindMax(int[] arr) that returns the largest value in the array
+//,Maximum, second Maximum, sorrting Array,Reverse.
+
+class program9
+    {
+        public int FindMax(int[] arr)
+        {
+            //Array.Sort(arr);
+            //return arr[^1];
+            return arr.Max(x => x); //Takes an input x, returns x unchanged
+        }
+        public void sortarray(int[] arr)
+        {
+            Array.Sort(arr);
+            Console.WriteLine($"Sorting Array : {string.Join(",", arr)}");
+        }
+        public void Reverse(int[] arr)
+        {
+            Array.Reverse(arr);
+            Console.WriteLine($"Reverse Array : {string.Join(",", arr)}");
+        }
+
+        public int secoundMax(int[] arr)
+        {
+            int max = int.MinValue;
+            int smax = int.MaxValue;
+            foreach (int sm in arr)
+            {
+                if (sm > max)
+                {
+                    smax = max;
+                    max = sm;
+                }
+                else if (sm < smax && sm != max)
+                {
+                    smax = max;
+                }
+            }
+            return smax;
+        }
+        public static void Main()
+        {
+            int[] arr = { 1, 2, 53, 43, 5, 9, 7, 8 };
+            program9 obj = new program9();
+
+            int max = obj.FindMax(arr);
+            Console.WriteLine($"Maximum : {max}");
+
+            int smax = obj.secoundMax(arr);
+            Console.WriteLine($"secound largest : {smax}");
+
+            obj.sortarray(arr);
+
+            obj.Reverse(arr);
+        }
+    }
