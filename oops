@@ -1,0 +1,314 @@
+//Question :- 01 : Create a class Student with properties Name, Age, and a method DisplayDetails() to print them. Create an object in Main() and call the method.
+
+class student
+{
+    string studentName;
+    int studentAge;
+    public string Name(string name)
+    {
+         studentName = name;
+        return name;
+    }
+    public int Age(int age)
+    {
+        studentAge = age;
+        return age;
+    }
+    public void displaydetails()
+    {
+        Console.WriteLine("Student Details :");
+        Console.WriteLine($"Name : {studentName}");
+        Console.WriteLine($"Age  : {studentAge}");
+    }
+    public static void Main()
+    {
+        student st1 = new student();
+        student st2 = new student();
+        st1.Name("bhavika");
+        st2.Name("bharat");
+        st1.Age(21);
+        st2.Age(19);
+        st1.displaydetails();
+        st2.displaydetails();
+
+    }
+}
+
+//Question :- 02 : Create a class Product with a constructor that initializes Id, Name, and Price. Create an object and print the details using a method.
+
+class product
+{
+    int id;
+    string name;
+    double price;
+    public product(int Id, string Name,double Price )
+    {
+        id = Id;
+        name = Name;
+        price = Price;
+    }
+    public static void Main ()
+    {
+        product p1 = new product(01,"apple", 150.00);
+        product p2 = new product(02, "banana", 80.00);
+        Console.WriteLine($" id : {p1.id} \n Name : {p1.name}\n price : {p1.price}\n");
+        Console.WriteLine($" id : {p2.id} \n Name : {p2.name}\n price : {p2.price}");
+    }
+}
+
+/Question :- 03 : Create a base class Animal with a method MakeSound(), and a derived class Dog that overrides the method to print “Bark!”.Call the method from the derived class.
+
+class Animal
+{
+    public virtual void MakeSound()
+    {
+        Console.WriteLine("Animal make sound ");
+
+    }
+}
+    class Dog : Animal 
+    {
+        public override void MakeSound()
+        {
+            Console.WriteLine("Dog : Bark");
+        }
+    }
+class cat : Animal {
+    public override void MakeSound()
+    {
+        Console.WriteLine("Cat : meows");
+    }
+class Program
+{
+    public static void Main()
+    {
+        Animal animal = new Animal();
+        animal.MakeSound();
+
+        Dog dog = new Dog();
+        dog.MakeSound();
+            cat cat = new cat();
+            cat.MakeSound();
+    }
+}
+}
+
+//Question :- 04 :  Create a class Calculator with overloaded Add methods : //Add(int, int)
+                                                                            //Add(double, double)
+                                                                            //Demonstrate both in Main().
+class  Calculator
+{
+    public int AddI(int x , int y)
+        { return x + y; }
+    public double AddD(double x , double y)
+        { return x + y; }
+    public static void Main()
+    {
+        Calculator cal = new Calculator();
+        int I = cal.AddI(15, 27);
+        double D = cal.AddD(6.6, 27.8);
+        Console.WriteLine($"Add int : {I}");
+        Console.WriteLine($"Add double : {D}");
+    }
+}
+
+//Question :- 05 : Create a class Shape with a virtual method Draw(), and derived class Circle that overrides Draw().
+
+class shape
+{
+    public virtual void Draw()
+    {
+        Console.WriteLine(" Draw the shape ");
+    }
+
+}
+class circle : shape
+{
+    public override void Draw()
+    {
+            Console.WriteLine("circle");
+    }
+}
+class square: shape
+{
+    public override void Draw()
+    {
+        Console.WriteLine("square");
+    }
+}
+class program
+{
+    public static void Main()
+    {
+        shape s = new shape();
+        s.Draw();
+        circle c = new circle();
+        c.Draw();
+        square sq = new square();
+        sq.Draw();
+    }
+}
+
+//Question :- 06 : Create a class BankAccount with private fields and public get/set methods (properties). Prevent negative balance through validation.
+
+class BankAccount
+{
+    public string Name { get; set; }
+    private double Balance { get; set; }
+    public  BankAccount (string name , double intialBalance)
+    {
+        Name = name;
+        Balance = intialBalance;
+        if (Balance < 0)
+        {
+            Console.WriteLine("invalid number ");
+        }
+    }
+    private void withdraw(double amount)
+    {
+        if (amount < 0)
+        {
+            Console.WriteLine(" Amount should be in positive ");
+        }
+        else if (amount > Balance)
+        {
+            Console.WriteLine("in sufficient amount ");
+        }
+        else
+        {
+            Balance -= amount;
+            Console.WriteLine($"Amount with draw successfully \n balance is :  {Balance}");
+        }
+
+    }
+    private void deposit(double amount)
+    {
+        if (amount < 0)
+        {
+            Console.WriteLine(" Amount should be in positive ");
+        }
+        else
+        {
+            Balance += amount;
+            Console.WriteLine($"Amount is deposited successfully \n balance is {Balance}");
+        }
+    }
+    public static void Main()
+    {
+        BankAccount ba = new BankAccount("bhavika", 1000.00);
+        ba.deposit(10000);
+        ba.withdraw(500);
+    }
+}
+
+//Question :- 07 : Create an abstract class Vehicle with abstract method StartEngine(). Derive a class Car that implements StartEngine()
+
+abstract class vehical     //abstract class = can’t be instantiated.
+{
+    public abstract void StartEngine();    //abstract method = must be overridden in a subclass.
+
+}
+class car : vehical
+{
+    // Properly implementing the abstract method in the derived class
+    public override void StartEngine() //override keyword = used in derived class to provide actual method logic.
+    {
+        Console.WriteLine("Car will start.");
+    }
+}
+class program
+{
+    public static void Main()
+    {
+        vehical v = new car();
+        v.StartEngine();
+    }
+}
+
+//Question :- 09 :  Create a class Counter with a static variable to count how many objects are created.
+
+class counter
+{
+    public static void variable(string s)
+    {
+        int count = 0;
+        bool b = false;
+        foreach (var v in s)
+        {
+            if (v != ' ')
+            {
+                if (!b)
+                {
+                    count++;
+                    b = true;
+                }
+            }
+            else
+            {
+                b = false;
+            }
+            }
+        Console.WriteLine($"Numbers of words : {count}");
+    }
+    public static void Main()
+    {
+        string s = "bhavika sai rani";  
+        counter.variable(s);
+
+    }
+}
+
+//Question :- 10 : Create a class Book with:
+                                          //a default constructor
+                                         //a parameterized constructor
+                                        //Show constructor overloading in action.
+class book
+{
+    int id;
+    string name;
+    double price;
+    public  book()
+    {
+        id = 001;
+        name = "MY VAMPIRE SYSTEM ";
+       price = 144.50;
+
+    }
+    public book(int id1)
+    {
+        id = id1;
+        name = "name";
+        price = 0;
+    }
+    public book (int id2, string name2)
+    {
+        id = id2;
+        name = name2;
+        price = 0;
+    }
+    public book (int id3 ,string name3 ,double price3)
+    {
+        id = id3;
+        name = name3;
+        price = price3;
+    }
+
+    public void display ()
+    {
+        Console.WriteLine($" Book id : {id}\n Book Name : {name}\n Book price : {price}\n ");
+    }
+}
+class program
+{
+    public static void Main()
+    {
+        book b1 = new book();
+        book b2 = new book(002,"SECRET AMEERZAADA",150.00);
+        book b3 = new book(003,"LOVE CONTRACT",120.00);
+        book b4 = new book(004, " xyz", 134.00);
+        b1.display();
+        b2.display();
+        b3.display();
+        b4.display();
+    }
+}
