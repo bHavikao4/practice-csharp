@@ -1,0 +1,339 @@
+// Question :- 01 : Variables + Data Types
+// Question :  Declare variables of type int, double, and string, assign them values from user input, and display them in a formatted message like:
+// 📘 "Your age is 22, your GPA is 7.8, and your name is Rani."
+
+string s = "Rani";
+int age = 22;
+double GPA = 7.8;
+Console.WriteLine($" Your name is {s}\n your age is {age}\n your GPA is {GPA}");
+
+
+// Question :- 02 : Conditional + Loops
+// Question : Print all numbers from 1 to 100 that are divisible by 3 and 5, using a for loop and an if condition.
+
+Console.Write(" Divisible by 3 and 5 are : ");
+for (int i = 1 ; i <= 100 ; i++)
+{
+    if(i % 3 == 0 &&  i %5 == 0)
+    {
+        Console.Write($" {i} ");
+    }
+}
+
+
+// Question :- 03 : Strings + Methods
+// Question : Create a method CountUppercase(string input) that returns how many uppercase letters are in the given string.
+
+class program2
+{
+    public int CountUppercase(string input)
+    {
+        int count = 0;
+        foreach (char c in input)
+        {
+            if (char.IsUpper(c))
+            {
+                count++;
+            }
+        }
+        return count;
+    }
+    public static void Main()
+    {
+        program2 u = new program2();
+        int count = u.CountUppercase("BhAvIkA");
+        Console.WriteLine($"count of upper case letters : {count}");
+    }
+}
+
+
+// Question :- 04 :  Arrays + Conditional
+// Question : Accept 10 numbers in an array and print only the numbers greater than 50.
+
+int[] n = { 1, 2, 54, 32, 67, 45, 89, 67, 34, 14 };
+Console.Write("print greater than 50 : "); 
+for (int i = 0;i < n.Length ; i++)
+{
+    if (n[i]>= 50)
+    {
+        Console.Write($" {n[i]} ");
+    }
+}
+
+
+// Question :- 05 : Loops + Methods
+// Question : Create a method PrintTriangle(int rows) that prints a triangle of * of given number of rows using nested loops.
+
+class program5
+{
+    public void printTringle (int rows)
+    {
+        for (int i = 0; i < rows+1; i++)
+        {
+            for (int j = 0; j <= rows-i ; j++)
+            {
+                Console.Write(" ");
+            }
+            for (int k = 1; k <=  2* i-1; k++)
+            {
+                Console.Write("*");
+            }
+            Console.WriteLine();
+        }
+    }
+    public static void Main() 
+    {
+        program5 pt = new program5();
+        pt.printTringle(5);
+    }
+    
+}
+
+
+// Question :- 06 : OOP: Class + Method
+// Question : Create a class Employee with properties Name, Id, and Salary. Add a method PrintDetails() to display them.
+
+abstract class employee
+{
+    public abstract void  properties();
+}
+class Name : employee
+{
+    public override void properties ()
+    {
+        Console.WriteLine("employee name : bhavika");
+    }
+}
+class id : employee
+{
+    public override void properties()
+    {
+        Console.WriteLine("employee id : 14");
+    }
+}
+class salary : employee
+{
+    public override void properties()
+    {
+        Console.WriteLine("employee salary : 5l");
+    }
+}
+
+class program
+{
+    public static void Display()
+    {
+        employee e = new Name();
+        employee e1 = new id();
+        employee e2 = new salary();
+        e.properties();
+        e1.properties();
+        e2.properties();
+    }
+    public static void Main()
+    {
+        Display();
+    }
+}
+
+
+// Question :- 06 : Data Types + Type Conversion
+// Question : Accept a decimal number from the user (e.g., 5.6) and convert it to int, string, and bool. Display all conversions.
+
+double d = 5.6;
+int i = (int)d;
+string j = Convert.ToString(d);
+bool b = d == 0;
+
+Console.WriteLine($" Convert into interger : {i}");
+Console.WriteLine($" Convert into string : {j}");
+Console.WriteLine($" Convert into bool : {b}");
+
+
+// Question :- 06 :  Array + Methods
+// Question : Create a method FindAverage(int[] numbers) that returns the average of array elements.
+
+class program6
+{
+    public static double FindAverage(int[] numbers)
+    {
+        int sum = numbers.Sum();
+        int l = numbers.Length;
+        double average = sum / l;
+        return average;
+    }
+    public static void Main ()
+    {
+        int[] numbers = { 1, 2, 3, 4, 5 };
+        double average = FindAverage(numbers);
+        Console.WriteLine($"Average : {average}");
+    }
+}
+
+
+// Question :- 09 : Loops + String
+// Question : Reverse a string manually without using Array.Reverse() or built-in string methods (use a loop).
+
+string[] s = { "bhavika" };
+foreach (string s2 in s)
+{
+    char[] c = s2.ToCharArray();
+    Array.Reverse(c);
+    string Reverse = new string(c);
+    Console.WriteLine($"Reverse string : {Reverse}");
+}
+string s1 = "sai rani";
+string rev =string.Empty;
+for (int i = s1.Length - 1; i >= 0; i--)
+{
+    rev += s1[i];
+}
+    Console.WriteLine($"Reverse string : {rev}");
+
+
+// Question :- 10 : OOP + Constructor
+// Question : Create a class Book with a constructor that accepts Title, Author, and Price. Instantiate it and print values in Main().
+
+class book
+{
+    string title;
+    string author;
+    double price;
+    public  book(string  Title, string Author ,double Price)
+    {
+        title = Title;
+        author = Author;
+        price = Price; ;
+    }
+    public void display()
+    {
+        Console.WriteLine($" Book Title : {title} \n Book Author : {author}\n Book Price : {price}\n ");
+    }
+    public static void Main()
+    {
+        book b1 = new book( "Mohabbat Ho Na Jaaye" ,"By Monika Agarwal" , 150.00);
+        b1.display();
+    }
+}
+
+
+// Question :- 11 :Interface + Class
+//Question : Create an interface IShape with a method Draw(). Implement this in classes Circle and Rectangle.
+
+interface IShape
+{
+    public void Draw();
+}
+class Circle : IShape
+{
+    public void Draw()
+    {
+        Console.WriteLine(" Draw the Circle ");
+    }
+}
+class Rectangle : IShape
+{
+    public void Draw()
+    {
+        Console.WriteLine(" Draw the Rectangle ");
+    }
+}
+class program ()
+{
+    public static void Main ()
+    {
+        Circle circle = new Circle ();
+        circle.Draw();
+        Rectangle rect = new Rectangle ();
+        rect.Draw ();
+    }
+}
+
+
+// Question :- 12 : Loops + Array
+// Question : Find and print the second smallest element in an integer array using loops (without sorting).
+
+int[] ints = {1,2, 37,7,54,6,78,0};
+int min = int.MaxValue;    // Assume the largest possible value initially
+int smin = int.MinValue;  // Assume the smallest possible value for second min
+foreach (int i in ints)
+{
+    if (i < min)         // If current number is smaller than current minimum
+    {
+        smin = min;       // Update second min to old min
+        min = i;         // Update min to current number
+    }
+    else if(i>min && i!=min)   // i is greater than min and not equal to it
+    {
+        smin = i;
+    }
+}
+Console.WriteLine(smin);
+
+// Question :- 13 :String + Array
+// Question : Split a sentence into words and store each word in an array. Print the words in reverse order.
+
+string s = "bhavika,sai,rani";
+string[] s1 = s.Split(',') ;
+string[] rev = s1.Reverse().ToArray();
+Console.WriteLine($" Reverse order worde : { string.Join(" ", rev)}");
+
+
+
+// Question :- 14 : Method Overloading
+// Question : Create overloaded methods Print() that:
+                                                  //prints "Hello"
+                                                  //prints a given name
+                                                 // prints name and age
+
+class program13
+{
+    public void print()
+    {
+        Console.WriteLine("Hello");
+    }
+    public void print(string name)
+    {
+        Console.WriteLine($"Hello {name}");
+    }
+    public void print(string name, int id) 
+    {
+        Console.WriteLine($"Hello {name}, {id}");
+    }
+    public static void Main()
+    {
+        program13 obj = new program13();
+        obj.print("bhavika");
+        obj.print("bhavika", 50);
+    }
+}
+
+
+// Question :- 15 : Encapsulation + Validation
+// Question : Create a class BankAccount with a private balance field.Use a property Balance to allow setting value only if it's positive.
+
+class BankAccount
+{
+    int amount;
+    public void Amount(int amt)
+    {
+        amount = amt;
+    }
+    private void balance()
+    {
+        if(amount<0)
+        {
+            Console.WriteLine($"{amount} amount should not be negative ");
+        }
+        else 
+        {
+            Console.WriteLine($"{amount} amount is positive ");
+        }
+    }
+    public static void Main()
+    {
+        BankAccount account = new BankAccount();
+        account.Amount(10000);
+        account.balance();
+    }
+}
