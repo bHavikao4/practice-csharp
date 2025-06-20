@@ -1,0 +1,284 @@
+// Question :- 01 :  Variables + Arithmetic
+// Question : Accept two numbers and calculate their square, cube, and sum of squares using separate variables.
+
+Console.Write (" Enter the 1st number  : ");
+int i1 = Convert.ToInt32(Console.ReadLine());
+Console.Write (" Enter the 2nd number  : ");
+int i2 = Convert.ToInt32(Console.ReadLine());
+
+int square1  = i1 * i1;
+int square2 = i2 * i2;
+int cude1 = i1 * i1 * i1;
+int cude2 = i2 * i2* i2;
+
+Console.WriteLine($"Square  {i1}  :  {square1}");
+Console.WriteLine($"Square  {i2}  :  {square2}");
+Console.WriteLine($"cube of {i1}  :  {cude1}");
+Console.WriteLine($"cube of {i2}  :  {cude2}");
+Console.WriteLine($"sum of square : {square1+square2}");
+
+
+// Question :- 02 :  Data Types + Casting
+// Question : Accept a float number, cast it to int manually, then back to float, and show how precision is affected.
+
+Console.Write("Enter the Number : ");
+float f = float.Parse(Console.ReadLine());
+Console.WriteLine($"original float number : {f}");
+
+int i = (int)f;
+Console.WriteLine($"Convert it into int : {i}");
+
+float f2 = (float)i;
+Console.WriteLine($"Again convert it into float : {f2}");
+
+float p = f - f2;
+Console.WriteLine($"precision lost : {p}");
+
+
+// Question :- 03 :  Loop + String
+// Question : Accept a string and print each character along with its position using a for loop.
+
+Console.Write("Enter the string : ");
+string s = Console.ReadLine();
+
+for (int i = 0;i<=s.Length;i++)
+    Console.WriteLine($"character : {s[i]}, position :  {i}");
+
+
+
+// Question :- 04 :  Conditional + Ternary
+// Question : Accept a mark and determine if the student passed using a ternary operator. (Pass mark: 40)
+
+Console.Write("Enter the Marks : ");
+int m = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine((m < 40) ? "student is not pass" : "student is pass");
+
+
+// Question :- 05 :  Loop + Conditional
+// Question : Print all numbers between 1 and 50 that are divisible by 7 but not by 5.
+
+Console.Write($"divisible by 7 but not 5 : ");
+for (int i=1;i<=50;i++)
+{
+    if (i % 7 == 0 && i % 5 != 0)
+    {
+        Console.Write($"{i} ");
+    }
+}
+
+
+// Question :- 06 :  Array + Even Count
+// Question : Accept 5 numbers in an array. Count how many are even and how many are odd.
+int counte = 0, counto = 0;
+int[] i1 = new int[5];
+Console.Write("Enter the Array : "); 
+string s = Console.ReadLine();
+string[] sp = s.Split(' ');
+
+for (int i = 0; i < i1.Length; i++)
+{
+    i1[i] = Convert.ToInt32(sp[i]);
+    if (i1[i] % 2 == 0)
+    {
+        counte++;
+    }
+    else
+    {
+        counto++;
+    }
+}
+Console.WriteLine($"Even Count : {counte}");
+Console.WriteLine($"Odd Count  : {counto}");
+
+
+// Question :- 07 :  Method + Conditional
+// Question : Create a method IsAlphabet(char c) that returns true if the character is a letter (A–Z or a–z).
+
+class program7
+{
+    public static bool IsAlphabet(char c)
+    { 
+        return (c >= 'A' && c <= 'Z' )||( c >= 'a' && c<= 'z');
+    }
+    public static void Main()
+
+    {
+        char a = 'b';
+        Console.WriteLine($"{a} character is letter or not : {IsAlphabet(a)}");
+    }
+}
+
+
+// Question :- 08 :  Loop + Sum of Squares
+// Question : Use a loop to print the sum of squares of numbers from 1 to N (e.g., 1² + 2² + 3² + ...).
+
+int N = 4;
+int sum = 0;
+for (int i = 1; i <= N; i++)
+{
+    int square = i * i;
+    sum += square;
+}
+Console.WriteLine($"sum of square of numbers : {sum}");
+
+
+// Question :- 09 :  OOP + Static Method
+// Question : Create a class MathHelper with a static method Square(int x) and use it in Main() without creating an object.
+
+class MathHelper
+{
+    public static void Square(int x) 
+    {
+        int square = x * x; 
+        Console.WriteLine($"square of number : {square}");
+    }
+
+    public static void Main()
+    {
+        int x = 4;
+        Square(x);
+    }
+}
+
+
+// Question :- 10 :   String + Conditional
+// Question : Accept a sentence and count how many words start with a vowel.
+
+Console.Write(" Enter the string : ");
+string s = Console.ReadLine();
+int count = 0, countc=0;
+foreach (char c in s)
+{
+    if ("aeiouAEIOU".Contains(c))
+    {
+        count++;
+    }
+    else
+    {
+        countc++;
+    }
+}
+Console.WriteLine($"vowels count : {count}");
+Console.WriteLine($"consonents count : {countc}");
+
+
+// Question :- 11 : Array + Search Method
+// Question : Write a method Contains(int[] arr, int key) that returns true if the number exists in the array.
+
+class program10
+{
+    public bool Contains(int[] arr,int key )
+    {
+       return arr.Contains(key);
+    }
+    public static void Main()
+    {
+       program10 obj = new program10();
+        int[] arr = { 1, 2, 3, 4, 9, 12, 14 };
+        int key = 14;
+        Console.WriteLine($"number exits or not {key} : {obj.Contains(arr,key)}");
+    }
+}
+
+
+// Question :- 12 :  Class + Object
+// Question : Create a class Person with a method SayHello() that prints “Hello, my name is [Name]”. Set the name via constructor.
+
+class person
+{
+    public string SayHello;
+    public person() 
+    {
+        string name ="bhavika";
+        Console.WriteLine($"Hello, my name is {name}");
+    }
+    public static void Main()
+    {
+        person obj = new person();
+    }
+}
+
+
+// Question :- 13 :  Interface + Inheritance
+// Question : Define an interface IRun with method Run(). Implement it in class Athlete and show how it works.
+
+interface IRun
+{
+    class Athlete : IRun
+    {
+        public void Run()
+        {
+            Console.WriteLine("Running is an Athleta game");
+        }
+
+    }
+    class sports : IRun
+    {
+        public void hockey()
+        {
+            Console.WriteLine("hockey is a sportive game ");
+        }
+    }
+    public static void Main(string[] args)
+    {
+        Athlete athlete = new Athlete();
+        athlete.Run();
+        sports s = new sports();
+        s.hockey();
+    }
+}
+
+
+// Question :- 14 :  Loop + Prime Count
+// Question : Accept a number N and count how many prime numbers are there between 1 and N.
+
+int N=50;
+Console.Write("Prime Numbers are : ");
+for (int i = 0; i < N; i++)
+{
+    int count =0;
+    for (int j = 2; j < i/2 ; j++)
+        if (i % j == 0)
+        {
+            count++;
+        }
+
+    if (count == 0)
+    {
+        Console.Write($"{i} ");
+    }
+}
+
+
+// Question :- 15 :  Method Overloading + Return Type
+//Question : Create overloaded methods GetArea() for:
+                                                   //Circle(radius)
+                                                   //Rectangle(length, width)
+                                                   //Each returns a double
+class GetArea
+{
+    public int Rectangle(int a, int b)
+    {
+        return(a * b);
+    }
+    public double Rectangle(double a, double b)
+    {
+        return(a * b);
+    }
+    public int Circle (int r)
+    {
+        return(r*r);
+    }
+    public double Circle (double r)
+    {
+        return(r*r);
+    }
+    public static void Main()
+    {
+        GetArea G = new GetArea();
+        Console.WriteLine($"Rectangle int : {G.Rectangle(4, 5)}");
+        Console.WriteLine($"Rectangle double : {G.Rectangle(3.5, 6.5)}");
+        Console.WriteLine($"Circle int : {G.Circle(4)}");
+        Console.WriteLine($"Circle double :{G.Circle(4.5)}");
+    }
+}
