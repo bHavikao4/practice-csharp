@@ -1,0 +1,334 @@
+// Question :- 01 : Variables + Constants
+// Question : Create constant variables for PI, gravity, and lightSpeed, and print them with appropriate labels.
+
+const double PI  = 123.567;
+const double gravity = 0.5;
+const double lightspeed = 21445567.89;
+Console.WriteLine($"PI         : {PI}");
+Console.WriteLine($"Gravity    : {gravity}");
+Console.WriteLine($"LightSpeed : {lightspeed}");
+
+
+// Question :- 02 : Data Types + Logical Operator
+// Question : Accept three bool values and use logical operators (&&, ||, !) to check if at least two of them are true.
+bool b = false;
+int a = 70;
+if(a>=45 && a<=75 )
+{
+    b = true;
+    Console.WriteLine("grade b");
+}
+if (a >= 45 || a <= 75)
+{
+    b = true;
+    Console.WriteLine("are not average students");
+}
+if (a != 90)
+{
+    b = true;
+    Console.WriteLine("they are not topper ");
+}
+
+
+// Question :- 03 : Loop + Nested Condition
+// Question : Print numbers from 1 to 50. For every number divisible by 3, print "Fizz", for 5 print "Buzz", for both print "FizzBuzz".
+
+int n = 50;
+Console.Write("FIZZ are       :");
+for (int i = 0; i <= 50; i++)
+    if (i % 3 == 0)
+    {
+        Console.Write($" {i}");
+    }
+Console.WriteLine();
+Console.Write("BUZZ are       :");
+    for (int i = 0; i <= 50; i++)
+        if (i % 5 == 0)
+    {
+        Console.Write($" {i}");
+    }
+    Console.WriteLine();
+Console.Write("FIZZ BUZZ  are :");
+for (int i = 0; i <= 50; i++)
+    if (i % 3 == 0 && i % 5 == 0)
+    {
+        Console.Write($" {i}");
+    }
+
+
+// Question :- 04 : String + ASCII Check
+// Question : Accept a string and print only those characters whose ASCII value is even.
+
+Console.Write("enter the string : ");
+string s = Console.ReadLine();
+for (int i = 0;i< s.Length;i++)
+{
+    char c = s[i];
+    int a = (int)c;
+    if (a%2  == 0)
+    {
+        Console.WriteLine($"letter : {c} index : {i} ASCIIvalue : {a}");
+    }
+}
+
+
+// Question :- 05 : Conditional + Nested If
+// Question : Accept three numbers and determine if they can form a triangle (use triangle inequality rule).
+//condition:
+//a + b > c
+//b + c > a
+//a + c > b
+
+Console.WriteLine("enter the sides of triangle : ");
+int a = Convert.ToInt32(Console.ReadLine());
+int b = Convert.ToInt32(Console.ReadLine());
+int c = Convert.ToInt32(Console.ReadLine());
+
+if ((a + b > c && b + c > a && a + c > b) && (a == b && b == c))
+{
+
+        Console.WriteLine("equilateral triangle ");
+}
+else
+{
+        Console.WriteLine("not an equilateral triangle ");
+}
+
+
+// Question :- 06 :  Array + Sum of Elements at Even Index
+// Question : Create an array of 10 integers. Calculate and print the sum of elements stored at even indexes only (0, 2, 4...).
+
+int[] a = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 0 };
+int sum = 0;
+for (int i = 0; i < a.Length; i++)
+    if (a[i] % 2 == 0)
+        sum += a[i];
+        Console.WriteLine($"sum of even elements : {sum}");
+
+
+// Question :- 07 : Method + Return Boolean
+// Question : Write a method IsPerfectNumber(int n) that returns true if a number is a perfect number (e.g., 6, 28).
+
+class program7
+{
+    public bool IsPerfectNumber(int n)
+    {
+        int sum = 0;
+        for (int i = 1; i < n; i++)
+        {
+            if (n % i == 0)
+            {
+                sum += i;
+            }
+        }
+        return sum ==n ;
+    }
+       public static void Main ()
+    {
+        program7 program7 = new program7 ();
+        int n = 6;
+        Console.WriteLine(program7.IsPerfectNumber(n) ? $"{n} perfect number " : $"{n} not perfect number ");
+    }
+}
+
+
+// Question :- 08 : String + Method + Count
+// Question : Write a method CountSpaces(string s) that returns the total number of white spaces in the string.
+
+class program8
+{
+    int count = 0;
+    public int CountSpace(string s)
+    {
+        foreach (char c in s)
+        {
+            if (char.IsWhiteSpace(c))
+            {
+                count++;
+            }
+        }
+        return count;
+    }
+    public static void Main()
+    {
+        program8 p = new program8();
+        string s = " bhavika sai rani";
+        int spaceCount = p.CountSpace(s);
+        Console.WriteLine($"Total spaces: {spaceCount}");
+    }
+}
+
+ 
+// Question :- 09 : Array + Reverse Using Method
+// Question : Write a method ReverseArray(int[] arr) that prints the array elements in reverse order.
+
+class program9
+{
+    public void ReverseArray(int[] arr)
+    {
+        Array.Reverse(arr);
+        Console.Write("Reverse array : ");
+        foreach (int i in arr)
+        {
+            Console.Write(i+ " ");
+        }
+    }
+    public static void Main()
+    {
+        int[] arr = { 1, 2, 3,4,5,6 };
+       program9 p = new program9();
+       p.ReverseArray(arr);
+    }
+}
+
+
+// Question :- 10 :  Loop + Digit Operations
+// Question : Accept a number and print the product of its digits using a loop.
+
+int n = 5;
+int product = 1;
+for (int i = 1; i <= n; i++)
+{
+    product *= i;
+}
+Console.WriteLine($"Product of digits {n} : {product}");
+
+
+// Question :- 11 : OOP + Constructor Chaining
+// Question : Create a class Employee with constructor chaining to initialize Id, Name, and Salary.
+
+class Employee
+{
+    int Id { get; set; }
+    string Name { get; set; }
+    double Salary { get; set; }
+
+    public Employee() : this(0, "unknown", 0.00) 
+    {
+
+    }
+    public Employee(int id) : this(id, "unknown", 0.00)
+    {
+
+    }
+    public Employee(int id, string name) : this(id, name, 0.00)
+    {
+
+    }
+    public Employee(int id, string name, double salary)
+    {
+
+        Id = id;
+        Name = name;
+        Salary = salary;
+    }
+    public void display ()
+    {
+        Console.WriteLine($"Employee id : {Id} Employee Name : {Name} employee Salary : {Salary}LPA ");
+    }
+    public static void Main ()
+    {
+        Employee e1 = new Employee();
+        e1.display();
+        Employee e2 = new Employee(1,"Bhavika",5.7);
+        e2.display();
+        Employee e3 = new Employee(2,"Sai",4.3);
+        e3.display();
+        Employee e4 = new Employee(3,"Rani",2.6);
+        e4.display();
+    }
+}
+
+
+// Question :- 13 : Method Overloading + Different Parameters
+// Question : Overload a method Greet() to:
+// Print "Hello"
+// Print a personalized greeting with name
+// Print a time-based greeting with name and time
+class program11
+{
+    public void Greet()
+    {
+        Console.WriteLine("hello");
+    }
+    public string Greet(string s)
+    {
+        return s;
+    }
+    public void Greet(string s, DateTime time)
+    {
+        Console.WriteLine($"{s}, Good Morning time is {time:HH:mm:ss} date is {time:dd:MM:yyyy}");
+    }
+
+    public static void Main()
+    {
+        program11 obj = new program11();
+        obj.Greet();
+        Console.WriteLine(obj.Greet("bhavika"));
+        obj.Greet("bhavika", DateTime.Now); 
+    }
+}
+
+
+// Question :- 14 : Array + Min-Max Difference
+// Question : Create an array of 8 integers and write logic to find the difference between the largest and smallest element.
+
+using project;
+
+int[] a = { 1, 0, 3, 4, 9, 5, 7, 8 };
+int temp = 0;
+for (int i=0;i<a.Length;i++)
+{
+    for (int j = i + 1; j < a.Length; j++)
+    {
+        if (a[i] > a[j])
+        {
+            temp = a[i];
+            a[i] = a[j];
+            a[j] = temp;
+        }
+    }
+}
+    int max = a[a.Length - 1];
+    int min = a[0];
+    Console.WriteLine($"maximum number : {max}");
+    Console.WriteLine($"minimum number : {min}");
+
+
+// Question :- 15 : Class + Method Call from Another Class
+// Question : Create two classes: Student and Result.Call a method in Result from an object of Student.
+
+class result
+{
+    public void resultofstudents(int marks)
+    {
+        if (marks < 50)
+        {
+            Console.WriteLine($"Marks : {marks} fail");
+        }
+        else
+        {
+            Console.WriteLine($"Marks : {marks} pass");
+        }
+    }
+}
+class student
+{
+    public string Name(string s)
+    {
+        return s;
+    }
+    public void display(string name, int marks)
+    {
+        Console.WriteLine($"Student Name : {name}");
+        result r = new result();
+        r.resultofstudents(marks);
+    }
+    public static void Main()
+    {
+        student st = new student();
+        string studentName = st.Name("Bhavika");
+        st.display(studentName, 75); 
+    }
+    
+}
