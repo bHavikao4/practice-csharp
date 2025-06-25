@@ -1,0 +1,365 @@
+// Question :- 01 : Variables + Scope
+// Question : Demonstrate variable shadowing by declaring a variable with the same name in a method that exists globally (class-level).
+
+class shadowing
+{
+    int number = 10;
+    public void variable()
+    {
+       int number = 20;
+        Console.WriteLine($" local variable : {number}");      // number = local variable
+        Console.WriteLine($" global variable: {this.number}"); //Access the number variable that belongs to the object(not the local method).
+                                                               //  this.number = class level
+    }
+    public static void Main ()
+    {
+        shadowing obj = new shadowing();
+        obj.variable();
+    }
+}
+
+
+// Question :- 02 : Data Types + Default Values
+// Question : Create variables of all basic data types without assigning them values. Print their default values using a method.
+
+class datatypes
+{
+    int i;
+    float f;
+    char c;
+    bool b;
+    byte by;
+    string s;
+    short st;
+    long l;
+    public void defaultvalues()
+    {
+        Console.WriteLine($"int   : {i}");
+        Console.WriteLine($"float : {f}");
+        Console.WriteLine($"char  : {c}");
+        Console.WriteLine($"bool  : {b}");
+        Console.WriteLine($"byte  : {by}");
+        Console.WriteLine($"string: {s}");
+        Console.WriteLine($"short : {st}");
+        Console.WriteLine($"long  : {l}");
+    }
+    public static void Main()
+    {
+        datatypes d = new datatypes();
+        d.defaultvalues();
+    }
+}
+
+
+// Question :- 03 : Loops + Continue Statement
+// Question : Print numbers from 1 to 20. Skip multiples of 4 using the continue keyword.
+
+int n = 20;
+Console.Write("skip the multiples of 4 : ");
+for (int i = 0;i<=n;i++)
+{
+    if(i%4==0)
+    {
+        continue;
+    }
+    Console.Write($"{i} ");
+}
+
+
+// Question :- 04 : Conditional + Switch with String
+// Question : Accept a string input: "start", "stop", "pause", or "exit". Use a switch statement to print an action message for each.
+string input;
+do
+{
+    Console.WriteLine("enter the input in (start ,stop ,pause,continue ,exit)");
+     input = Console.ReadLine();
+    switch (input)
+    {
+        case "start":
+            {
+                Console.WriteLine("video is started ");
+                break;
+            }
+        case "continue":
+            {
+                Console.WriteLine("video is continuing");
+                break;
+            }
+        case "stop":
+            {
+                Console.WriteLine("video id stoped ");
+                break;
+            }
+        case "pause":
+            {
+                Console.WriteLine("video is  paused ");
+                break;
+            }
+        case "exit":
+            {
+                Console.WriteLine(" video is exited ");
+                break;
+            }
+        default:
+            {
+                Console.WriteLine("invaid request ");
+                break;
+            }
+    }
+}
+while (input.ToLower() != "exit");
+
+
+// Question :- 05 : String + Manual Comparison
+// Question : Accept two strings and compare them character-by-character without using ==, .Equals(), or.CompareTo().
+
+string s1 = "bhavika";
+string s2 = "Bhavika";
+bool b = true;
+    if (s1.Length!=s2.Length)
+    {
+        b = false;
+
+    }
+    for(int i=0;i<s1.Length;i++)
+{ 
+        if(s1[i] != s2[i])
+        {
+            b=false;
+            
+        }
+    }
+
+if (b)
+{
+    Console.WriteLine($"compare 2 string ({s1}, {s2}) : {b}");
+}
+else
+{
+
+    Console.WriteLine($"compare 2 string ({s1}, {s2}) : {b}");
+}
+
+
+// Question :- 06 : Array + Element Frequency
+// Question : Accept 10 integers and display how many times each number occurs in the array.
+
+int[] s = { 1, 3, 5, 7, 2, 5, 3, 1, 6, 9 };
+Dictionary<int,int>d = new Dictionary<int,int>();
+foreach (int i in s)
+{
+    if(d.ContainsKey(i))
+    {
+        d[i]++;
+    }
+    else { d[i] = 1; }
+}
+foreach (var pair in d)
+{
+    Console.WriteLine($"{pair.Key} : {pair.Value}");
+}
+
+
+// Question :- 07 : Method + Default Parameter
+// Question : Write a method Greet(string name = "User") that prints a welcome message. Call it with and without arguments.
+
+class program
+{
+    public void greet(string name = "user")
+    {
+        Console.WriteLine($"welcome {name}");
+    }
+    public static void Main()
+    {
+        program p = new program();
+        p.greet();
+
+    }
+}
+
+
+// Question :- 08 : Loop + Sum of Multiples
+// Question : Find the sum of all numbers between 1 and 100 that are divisible by both 4 and 6.
+
+int n = 100;
+int sum = 0;
+Console.Write("Divisiable by 4and 6 : ");
+for (int i = 0;i<=n;i++)
+{
+    if(i%4==0 && i%6==0)
+    {
+        sum += i;   
+        Console.Write($"{i} ");
+    }
+}
+Console.WriteLine();
+Console.WriteLine($"sum : {sum}");
+
+
+// Question :- 09 : OOP + Object Initialization
+// Question : Create a class Book with Title, Author, and Price. Use object initializer syntax in Main() to assign values.
+
+class book
+{
+    private string Title; //encapsulation is used
+    private string Author;
+    private double Price;
+    
+    public void display ()
+    {
+        Console.WriteLine($"Title : {Title}, Author : {Author}, Price : {Price}");
+    }
+    public static void Main()
+    {
+        book Book = new book      // object initializer
+        {
+            Title = "TILL DEATH",
+            Author = "CHUAN",
+           Price = 123.45
+           
+        }; 
+        Book.display();
+    }
+
+}
+
+
+// Question :- 10 : Interface + Multiple Classes
+//Question : Create an interface IVehicle. Implement it in classes Car and Bike. Each should have its own Start() implementation.
+
+interface IVehicle    //  interface : used to define a contract that specifies a set of methods, properties, events, and indexers that a class or struct must implement
+{
+    void start();
+}
+class car : IVehicle
+{
+    public void start()
+    {
+        Console.WriteLine("Car is started ");
+    }
+}
+class bike : IVehicle
+{
+    public void  start()
+    {
+        Console.WriteLine("Bike is started ");
+    }
+}
+class program
+{
+    public void display()
+    {
+        car myCar = new car();
+        myCar.start(); 
+        bike myBike = new bike();
+        myBike.start();
+    }
+
+    public static void Main()
+    {
+        program p = new program();
+        p.display();
+    }
+}
+
+
+// Question :- 11 : String + Character Position
+// Question : Accept a string and a character from the user. Find and print all positions (indexes) where that character appears.
+
+Console.Write("Enter the string : ");
+string s = Console.ReadLine();
+for (int i = 0;i<=s.Length;i++)
+{
+    Console.WriteLine($"char : {s[i]}, index : {i}");
+}
+
+// Question :- 12 :  Array + Sorting Logic (Without Built-in Method)
+// Question : Sort an integer array in descending order using nested loops and print the result.
+
+int[] a = { 1, 3, 5, 6, 8, 7, 4, 2 };
+int temp = 0;
+for (int i  = 0; i < a.Length-1; i++)
+{
+    for (int j = i+1 ;j < a.Length; j++)
+    {
+        if (a[i] <= a[j])
+        {
+            temp = a[i];
+            a[i] = a[j];
+            a[j] = temp;
+        }
+
+    }
+}
+Console.Write("sorting array in decending order : ");
+foreach (int s in a)
+{
+    Console.Write($"{s} ");
+}
+
+
+// Question :- 13 : Method Overriding with Base Keyword
+// Question : Create a base class Shape with a virtual method Draw(). Override it in class Rectangle but still call base method.
+
+class shape
+{
+    public virtual void  Draw ()    // virtual : modify a method, property, indexer, or event declaration and allow for it to be overridden in a derived class
+    {
+        Console.WriteLine("draw the shape ");
+    }
+}
+class rectangle: shape
+{
+    public override void Draw()  //override : modify the abstract or virtual implementation of an inherited method, property, indexer, or event.
+    {
+        base.Draw();   // base : used to access members of the base (or parent) class from within a derived (or child) class
+        Console.WriteLine("draw the rectangle");
+    }
+}
+class program
+{
+     public static void Main()
+    {
+        rectangle r = new rectangle();
+        r.Draw();
+    }
+}
+
+
+// Question :- 14 : Conditional + Nested Loops
+// Question : Print the following pattern using nested loops and conditions: // 1
+                                                                             // 1 2
+                                                                             // 1 2 3
+                                                                             // 1 2 3 4
+
+int r = 4;
+for (int i = 1;i<=r;i++)
+{
+    Console.Write("");
+    for (int j = 1;j<=i;j++)
+    {
+        Console.Write(j);
+    }
+    Console.WriteLine();
+}
+
+
+// Question :- 15 : Static Class and Method
+// Question : Create a static class Utility with a static method IsEven(int num) and use it in another class without object creation.
+
+static class utility
+{
+    public static void IsEven(int num)
+    {
+        Console.WriteLine($" {num} Is Even");
+    }
+    public static void IsOdd(int num)
+    {
+        Console.WriteLine($" {num} Is Odd ");
+    }
+    public static void Main ()
+    {
+        utility.IsEven(4);
+        utility.IsOdd(1);
+    }
+}
