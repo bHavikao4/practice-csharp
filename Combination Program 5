@@ -1,0 +1,353 @@
+
+// Question :- 01 : Variables + Type Inference
+// Question : Use var to declare three variables of different data types (int, string, bool) and print their values and types using .GetType().
+
+var id   = 0450;
+var name = "bhavika";
+var type = true;
+Console.WriteLine($"VALUE : {id}      , TYPE : {id.GetType()} ");
+Console.WriteLine($"VALUE : {name}  , TYPE : {name.GetType()}");
+Console.WriteLine($"VALUE : {type}     , TYPE : {type.GetType()}");
+
+
+// Question :- 02 : Data Types + Nullable Type
+// Question : Create a nullable int? and print "Value Exists" if it has a value, or "Null Found" if it doesn’t.
+
+int? i = null;
+if (i.HasValue)
+{
+    Console.WriteLine($" vailue exist : {i}");
+}
+else
+{
+    Console.WriteLine("null value ");
+}
+
+// Question :- 03 : Loops + Conditional Check
+// Question : Print all prime numbers between 10 and 50 using a for loop and a method IsPrime(int num).
+
+
+class program
+{
+    public bool IsPrime(int num)
+    {
+        if (num <= 1)
+            return false;
+        for (int i = 2;i<=Math.Sqrt(num);i++)
+        {
+            if(num % i == 0)
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+    public static void Main()
+    {
+        Console.Write("prime numbers between 1 to 50 : ");
+        program p = new program();
+        for (int i = 1; i <= 50; i++)
+        {
+            if (p.IsPrime(i))
+            {
+                Console.Write($"{i} ");
+            }
+        }
+    }
+
+}
+
+
+// Question :- 04 : Conditional + Age Category
+// Question : Accept age from the user and classify the person as:  Child(0–12) & Teen(13–19) & Adult(20–59) & Senior(60 +)
+
+Console.Write("Enter the number : ");
+int i = Convert.ToInt32(Console.ReadLine());
+if(i>=0 && i<=12)
+{
+    Console.WriteLine($"CHILD {i}");
+}
+else if (i>=13  && i<=19)
+{
+    Console.WriteLine($"TEEN {i}");
+}
+else if (i>=20 && i<= 59)
+{
+    Console.WriteLine($"ADULT {i}");
+}
+else if (i>=60)
+{
+    Console.WriteLine($"SENIOR {i}");
+}
+
+
+// Question :- 05 : String + Toggle Case
+// Question : Accept a string and convert all lowercase letters to uppercase and vice versa, without using built-in methods like .ToUpper() or.ToLower().
+// ASCII value of 'A' is 65, 'a' is 97. Difference is 32.So to convert: Upper → Lower: add 32, Lower → Upper: subtract 32
+
+Console.Write("Enter the string : ");
+string s = Console.ReadLine();
+string result = " ";
+foreach(char ch in s)
+{
+    if (ch >= 'A' && ch <= 'Z')
+    {
+         result += (char)(ch + 32);
+
+    }
+    else if (ch >= 'a' && ch <= 'z')
+    {
+        result += (char)(ch -32 );
+    }
+    else
+    {
+        result += ch;
+    }
+}
+Console.WriteLine($"convert uppercase to lower case : {result}");
+
+
+// Question :- 06 : Array + Element Replacement
+// Question : Accept 5 elements in an integer array. Replace every even number with 0 and print the modified array.
+
+int[] a = { 1 ,5,6,3,4 };
+Console.Write("replace even number with '0' : ");
+for (int i = 0; i < a.Length; i++)
+{
+    if (a[i] % 2 == 0)
+    {
+        a[i] = 0; 
+    }
+    Console.Write($"{a[i]} "); 
+}
+
+
+// Question :- 07 : Method + Return Type
+// Question : Create a method GetInitials(string fullName) that returns the initials of a full name (e.g., "A P J Abdul Kalam" → "APJAK").
+
+
+class program7
+{
+
+    public string GetInitials(string fullName)
+    {
+        string initials = string.Empty;
+        foreach (var name in fullName.Split(' '))
+        {
+            if(!string.IsNullOrWhiteSpace(name))
+            {
+                initials += name[0];
+            }
+        }
+        return initials.ToUpper();
+    }
+    public static void Main()
+    {
+        program7 p = new program7();
+        string name = "K Bhavika sai rani ";
+        string result = p.GetInitials(name);
+        Console.WriteLine($"starting letters of string : {result}");
+    }
+    
+}
+
+
+// Question :- 08 : Loops + Character Count
+// Question: Accept a sentence and count how many digits, letters, and special characters it contains using a loop.
+
+Console.Write("Enter the string : ");
+string  s = Console.ReadLine();
+Dictionary<char,int> d = new Dictionary<char,int>();
+foreach (char c in s)
+{
+    if (char.IsWhiteSpace(c)) continue;
+
+    if (d.ContainsKey(c))
+        d[c]++;
+    else
+        d[c] = 1;
+}
+
+Console.WriteLine("\nCharacter Frequency:");
+foreach (var pair in d)
+{
+    Console.WriteLine($"'{pair.Key}' : {pair.Value}");
+}
+
+
+// Question :- 09 : Class + Object + Property
+// Question : Create a class Movie with properties Title, Genre, and Rating. Accept input in Main() and display movie details.
+
+// PROPERTY : Properties are the special types of class members that provide a flexible mechanism to read, write, or compute the value of a private field
+// Return-type: Used to define which value returns with the end of the method.
+// Get accessor: Used to get the values.
+// Set accessor: Used to set or modify the values.
+class movie
+{
+    public string Title { get; set; }
+    public string Genre { get; set; }
+    public double Rating { get; set; }
+    public void display()
+    {
+        Console.WriteLine($"Movie Title   : {Title} ");
+        Console.WriteLine($"Movie Genre   : {Genre}");
+        Console.WriteLine($"Movie Rating  : {Rating}");
+    }
+    public static void Main()
+    {
+        movie m = new movie();
+        Console.Write("ENTER THE TITLE : ");
+        m.Title = Console.ReadLine();
+        Console.Write("ENTER THE GENRE : ");
+        m.Genre = Console.ReadLine();
+        Console.Write("ENTER THE RATING : ");
+        m.Rating= Convert.ToDouble(Console.ReadLine());
+        m.display();
+    }
+}
+
+
+// Question :- 10 : Interface + Polymorphism
+// Question : Create an interface IShape with method Area(). Implement it in classes Square and Circle. Call Area() using an interface reference.
+
+interface IShape
+{
+    double Area(int si);
+}
+    class circle : IShape
+    {
+        public double Area(int si)
+        {
+        double r = si / 2 ;
+        double c = 22/7 * r * r; 
+            return c;
+        }
+    }
+    class square : IShape
+    {
+        public double Area(int si)
+        {
+            int s = si * si;
+            return s;
+        }
+    }
+class program10
+{
+    public static void Main()
+    {
+        IShape c = new circle();
+        double circle = c.Area(4);
+        IShape s = new square();
+        double square = s.Area(5);
+        Console.WriteLine($"Area of circle : {circle}");
+        Console.WriteLine($"Area if square : {square}");
+    }
+
+}
+
+
+// Question :- 11 : String + Character Position
+// Question : Accept a string and a character from the user. Find and print all positions (indexes) where that character appears.
+Console.Write("Enter the string : ");
+string s = Console.ReadLine();
+for (int i = 0; i < s.Length; i++)   
+{
+    if (s[i] != ' ')
+        Console.WriteLine(s[i] + " -> " + i);
+}
+
+
+// Question :- 12 : Array + Sorting Logic (Without Built-in Method)
+// Question : Sort an integer array in descending order using nested loops and print the result.
+int[] a = { 1, 5, 3, 7, 2, 4, 9 };
+int temp = 0;
+for (int i = 0; i < a.Length - 1; i++)
+{
+    for (int j = 0; j < a.Length - 1 - i; j++)
+    {
+        if (a[j] < a[j + 1])
+        {
+            temp = a[j];
+            a[j] = a[j + 1];
+            a[j + 1] = temp;
+        }
+    }
+}
+Console.Write("sorting elements in descending order : ");
+foreach(int s in a)
+Console.Write($"{s} ");
+
+
+// Question :- 13 : Method Overloading + String Concatenation
+// Question : Create overloaded methods Join(string a, string b) and Join(string a, string b, string c) to join 2 or 3 strings.
+
+class program
+{
+    public void Join(string a, string b)
+    {
+        Console.WriteLine($"JOIN 2 STRINGS {a +b} ");
+    }
+
+    public void Join(string a, string b, string c)
+    {
+        Console.WriteLine($"JOIN 3 STRINGS {a + b + c} " );
+    }
+    public static void Main()
+    {
+        program p = new program();
+        p.Join("hi", "hello");
+        p.Join("hi", "hello", "world");
+    }
+}
+
+
+// Question :- 14 : Loop + Armstrong Number
+// Question : Accept a number and check whether it is an Armstrong number (e.g., 153 → 1³ + 5³ + 3³ = 153).
+
+int a = 153;
+int num;
+int sum = 0;
+int temp = a;
+while (a > 0)
+{
+    num = a % 10;       // This gets the last digit of the number. (eg : 153 % 10 = 3 → num = 3)
+    sum += num * num * num;  // This adds the cube of the digit to the sum. (eg : sum = 0 + 3*3*3 = 27)
+    a /= 10;       // This removes the last digit from the number by doing integer division.(a = 153 / 10 = 15)
+}
+
+if (sum == temp)
+
+{
+    Console.WriteLine($"{sum} Amstrong Number ");
+}
+else
+{
+    Console.WriteLine($" Not an amstrong ");
+}
+
+
+// Question :- 15 : Static vs Instance Method
+// Question : Create a class MathOps with one static method Add() and one instance method Multiply(). Demonstrate how to call both from Main().
+
+class MathOps
+{
+    public static int Add(int a, int b)
+    {
+        return a + b;
+    }
+    public int Multiple(int a, int b)
+    {
+        return a * b;
+    }
+    public static void Main()
+    {
+        // Corrected the call to the static method Add by qualifying it with the class name
+        int sum = MathOps.Add(3, 4);
+        Console.WriteLine($"Sum: {sum}");
+
+        // Instance method Multiple is called using an object of the class
+        MathOps m = new MathOps();
+        int product = m.Multiple(3, 4);
+        Console.WriteLine($"Product: {product}");
+    }
+}
