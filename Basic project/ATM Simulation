@@ -1,0 +1,110 @@
+// Question :- 02 : ATM Simulation
+// Topics Used: Class, Encapsulation, Switch, Loops, File I/O (optional)
+// Features: Balance check, deposit, withdraw, mini-statement
+
+class atm
+{
+    private double balance;
+    private double lastWithdraw;
+    private double lastdeposit;
+
+    public atm (double initialbalance)
+    {
+        balance = initialbalance;
+    }
+    public void checkbalance()
+    {
+        Console.WriteLine($"Your balance is RS.{balance:f2}\n");
+    }
+    public void deposit(double amount)
+    {
+        if(balance >= 0 )
+        { 
+            Console.WriteLine($"Amount = Balance({balance})+Deposit({amount})");
+            balance += amount;
+            lastdeposit = amount;
+            Console.Write($"Your balance is RS.{balance:f2}");
+            Console.WriteLine("\n");
+        }
+        else
+        {
+            Console.WriteLine($"Invalid amount {amount}");
+            Console.WriteLine("\n");
+        }
+    }
+    public void withdraw(double amount)
+    {
+        if(amount<=0)
+        {
+            Console.WriteLine($"Ivalid amount {amount}");
+            Console.WriteLine("\n");
+        }
+        if(amount > balance)
+        {
+            Console.WriteLine($"Insufficient balance {balance}");
+            Console.WriteLine("\n");
+        }
+        else
+        {
+            balance -= amount;
+            lastWithdraw = amount;
+            Console.WriteLine($"Amount = Balance({balance + amount}) - Withdraw({amount})");
+            Console.WriteLine($"Your balance is RS.{balance:f2}");
+            Console.WriteLine("\n");
+        }
+    }
+
+    public void ministatement()
+    {
+        Console.WriteLine("______________________________________");
+        Console.WriteLine("*==* MINI STATEMENT *==* ");
+        Console.WriteLine("______________________________________");
+        Console.WriteLine($"BALANCE  : {balance:f2}");
+        Console.WriteLine($"DEPOSIT  : {lastdeposit:f2}");
+        Console.WriteLine($"WITHDRAW : {lastWithdraw:f2}");
+        Console.WriteLine("______________________________________\n");
+    }
+
+    public static void Main()
+    {
+        atm s = new atm(1000);
+        int choice;
+        do
+        {
+            Console.WriteLine("** STATEMENTS ** ");
+            Console.WriteLine("1.CHECK BALANCE ");
+            Console.WriteLine("2.DEPOSIT");
+            Console.WriteLine("3.WITHDRAW");
+            Console.WriteLine("4.MINI STATEMENT");
+            Console.WriteLine("5.EXIT");
+            Console.Write("CHOOSE THE NUMBER : ");
+            choice = Convert.ToInt32(Console.ReadLine());
+            switch (choice)
+            {
+                case 1:
+                    s.checkbalance();
+                    break;
+                case 2:
+                    Console.Write("Enter the deposit amount : ");
+                    double damt = Convert.ToDouble(Console.ReadLine());
+                    s.deposit(damt);
+                    break;
+                case 3:
+                    Console.Write("Enter the withdraw amount : ");
+                    double wamt = Convert.ToDouble(Console.ReadLine());
+                    s.withdraw(wamt);
+                    break;
+                    case 4:
+                    s.ministatement();
+                    break;
+                case 5:
+                    Console.WriteLine("THANK YOU ");
+                    break;
+                    default:
+                    Console.WriteLine("INVALID NUMBER ");
+                    break ;
+            }
+        }
+        while(choice != 5);
+    }
+}
