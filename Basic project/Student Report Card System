@@ -1,0 +1,88 @@
+// Question :- 01 :  Student Report Card System
+// Topics Used: Classes, Arrays, Loops, Methods, Conditional Statements, Struct
+// Description: Accept marks of 5 subjects, calculate total, percentage, and grade.
+
+    struct student
+    {
+        public int id;
+        public string name;
+    public int[] marks;
+        public int total;
+        public double percentage;
+        public string grade;
+    }
+class reportcard
+{
+    public void detailsandsubject(ref student s)
+    {
+        Console.Write("Enter the id : ");
+        s.id = Convert.ToInt32(Console.ReadLine());
+        Console.Write("Enter the name : ");
+        s.name = Console.ReadLine();
+        Console.WriteLine("Enter the marks : ");
+        s.marks = new int[5];
+        for (int i = 0; i < s.marks.Length; i++) { 
+            Console.Write($"Subject {i + 1} : ");
+        s.marks[i] = Convert.ToInt32(Console.ReadLine()); }
+    }
+    public void Marks(ref student s)
+    {
+        foreach (int i in s.marks)
+        {
+            s.total += i;
+        }
+        s.percentage = (double)s.total/5.0;
+
+        if (s.percentage >= 90)
+        {
+            s.grade = "A+";
+            Console.WriteLine("GRADE : A+ ");
+        }
+        else if (s.percentage >= 80)
+        {
+            s.grade = "A";
+            Console.WriteLine("GRADE : A ");
+        }
+        else if(s.percentage >= 70)
+        {
+            s.grade = "B";
+            Console.WriteLine("GRADE : B ");
+        }
+        else if ( s.percentage >= 60 )
+        {
+            s.grade = "C";
+            Console.WriteLine("GRADE : C ");
+        }
+        else if(s.percentage >= 50 )
+        {
+            s.grade = "D";
+            Console.WriteLine("GRADE : D ");
+        }
+        else
+        {
+            s.grade = "E";
+            Console.WriteLine($"{s.grade} FAILED ");
+        }
+    }
+    public void display(ref student s)
+    {
+        Console.WriteLine("______________________________________");
+        Console.WriteLine("*==* REPORT CARD *==*");
+        Console.WriteLine("______________________________________");
+        Console.WriteLine($"Roll No.      : {s.id}");
+        Console.WriteLine($"Name          : {s.name}");
+        Console.WriteLine($"Subject marks : {string.Join(", ", s.marks)}");
+        Console.WriteLine($"Total         : {s.total}");
+        Console.WriteLine($"Percentage    : {s.percentage}");
+        Console.WriteLine($"Grade         : {s.grade}");
+        Console.WriteLine("______________________________________");
+    }
+    public static void Main()
+    {
+        student st = new student();
+        reportcard rc = new reportcard();
+        rc.detailsandsubject(ref st);
+        rc.Marks(ref st);
+        rc.display(ref st);
+    }
+}
