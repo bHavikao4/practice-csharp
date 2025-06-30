@@ -1,0 +1,87 @@
+// Question :- 03 : Contact Book
+// Topics Used: Collections(List<T>), Strings, Classes, Search
+// Features: Add, view, search contacts by name or phone number.
+
+
+class contact
+{
+    public String Name{  get; set; }
+    public int phonenumber { get; set; }
+}
+class contactbook
+{
+    private List<contact> contacts = new List<contact>(); 
+
+    public void Addcontact(string name, int phone)
+    {
+        contacts.Add(new contact { Name = name, phonenumber = phone });
+    }
+
+    public void viewcontact()
+    {
+        if (contacts.Count == 0)
+        {
+            Console.WriteLine("no contact found ");
+        }
+        foreach (var cont in contacts)
+        {
+            Console.WriteLine($"NAME : {cont.Name} \nPHONE NUMBER : {cont.phonenumber}");
+        }
+        Console.WriteLine();
+    }
+    public void searchcontact(string name, int phone)
+    {
+        if (contacts.Count == 0)
+        {
+            Console.WriteLine("no countact are avaliable");
+        }
+        else
+        {
+            Console.WriteLine("search contact ");
+            foreach (var cont in contacts)
+                if (cont.Name == name || cont.phonenumber == phone)
+                {
+                    Console.WriteLine($"found \nName : {cont.Name},Phone number : {cont.phonenumber}");
+                }
+        }
+    }
+    public static void Main()
+    {
+        contactbook book = new contactbook();
+        while (true) {
+        Console.WriteLine(" ** statement **");
+        Console.WriteLine("1. ADD CONTACT ");
+        Console.WriteLine("2. VIEW CONTACT ");
+        Console.WriteLine("3.SEARCH CONTACT");
+        Console.WriteLine("4.EXIT ");
+            Console.Write("Enter your choice : ");
+        int choice = Convert.ToInt32(Console.ReadLine());   
+        switch (choice)
+        {
+                case 1:
+                Console.Write("Enter the name : ");
+                string name = Console.ReadLine();
+                Console.Write("Enter the phone number : ");
+                int phone = Convert.ToInt32 (Console.ReadLine());
+                    book.Addcontact(name, phone);
+                    break;
+                    case 2:
+                    book.viewcontact();
+                    break;
+                case 3:
+                    Console.Write("Enter the name to search (or leave blank to search by phone): ");
+                    string searchName = Console.ReadLine();
+                    Console.Write("Enter the phone number to search (or enter 0 to skip): ");
+                    int searchPhone = Convert.ToInt32(Console.ReadLine());
+                    book.searchcontact(searchName, searchPhone);
+                    break;
+                    case 4:
+                    Console.WriteLine("THANK YOU ");
+                    return;
+                    default:
+                    Console.WriteLine(" invalid input ");
+                    break ;
+            }
+    }
+}
+    }
