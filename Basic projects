@@ -1,0 +1,121 @@
+// Question :- 01 :    /// view ,update, remove,add projecs ///
+
+   using System;
+class ToDoListApp
+{
+    static void Main(string[] args)
+    {
+        List<string> tasks = new List<string>();
+        bool running = true;
+
+        while (running)
+        {
+            Console.Clear();
+            Console.WriteLine("==== TO DO LIST ====");
+            Console.WriteLine("1. VIEW TASK");
+            Console.WriteLine("2. ADD TASK");
+            Console.WriteLine("3. REMOVE TASK");
+            Console.WriteLine("4. UPDATE TASK");
+            Console.WriteLine("5. EXIT");
+            Console.Write("  CHOOSE AN OPTION :  ");
+
+            switch (Console.ReadLine())
+            {
+                case "1":
+                    ViewTask(tasks);
+                    break;
+                case "2":
+                    AddTask(tasks);
+                    break;
+                case "3":
+                    RemoveTask(tasks);
+                    break;
+                case "4":
+                    UpdateTask(tasks);
+                    break;
+                case "5":
+                    running = false;
+                    break;
+                default:
+                    Console.WriteLine("// INVALID INPUT && PRESS ENTER TO CONTINUE //");
+                    Console.ReadLine();
+                    break;
+            }
+        }
+    }
+
+    private static void ViewTask(List<string> tasks)
+    {
+        Console.WriteLine("\n==** YOUR TASKS **== ");
+        if (tasks.Count == 0)
+        {
+            Console.WriteLine("!!!  TASKS FOUND !!!");
+        }
+        else
+        {
+            for (int i = 0; i < tasks.Count; i++)
+            {
+                Console.WriteLine($"{i + 1}. {tasks[i]}");
+            }
+        }
+        Console.WriteLine("@@ TO CHOUSE ANOTHER OPTION PRESS ENTER  @@");
+        Console.ReadLine();
+    }
+
+    private static void AddTask(List<string> tasks)
+    {
+        Console.Write(" ENTER A NEW TASK :  ");
+        string task = Console.ReadLine();
+        if (!string.IsNullOrWhiteSpace(task))
+        {
+            tasks.Add(task);
+            Console.WriteLine(" __TASK ADDED  SUCCESSFULLY __");
+        }
+        else
+        {
+            Console.WriteLine("__ TASK IS NOT ADDED __");
+        }
+        Console.ReadLine();
+    }
+
+    private static void RemoveTask(List<string> tasks)
+    {
+        ViewTask(tasks);
+        Console.Write("ENTER NUMBER TO REMOVE  : ");
+        if (int.TryParse(Console.ReadLine(), out int index) && index >= 1 && index <= tasks.Count)
+        {
+            tasks.RemoveAt(index - 1);
+            Console.WriteLine("__ TASK IS REMOVED __");
+        }
+        else
+        {
+            Console.WriteLine("__ TASK IS'NT REMOVED__");
+        }
+        Console.ReadLine();
+    }
+
+    private static void UpdateTask(List<string> tasks)
+    {
+        ViewTask(tasks);
+        Console.Write("ENTER NUMBER TO UPDATE : ");
+        if (int.TryParse(Console.ReadLine(), out int index) && index >= 1 && index <= tasks.Count)
+        {
+            Console.Write("ENTER THE NEW TASK : ");
+            string newTask = Console.ReadLine();
+            if (!string.IsNullOrWhiteSpace(newTask))
+            {
+                tasks[index - 1] = newTask;
+                Console.WriteLine("__TASK UPDATED__");
+            }
+            else
+            {
+                Console.WriteLine("__UPDATE CANNOT BE EMPTY__");
+            }
+        }
+        else
+        {
+            Console.WriteLine("__INVALID TASK NUMBER__");
+        }
+        Console.ReadLine();
+    }
+}
