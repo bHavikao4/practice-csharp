@@ -1,0 +1,128 @@
+enum status
+    { pending , completed }
+
+class ToDoList
+{
+    public string description { get; set; }
+    public status taskdetails { get; set; }
+    private List<ToDoList> list = new List<ToDoList>();
+
+    public void add(string descrip, string task)
+    {
+        // Attempts to convert the string task to a value of the status enum.
+        if (Enum.TryParse(task, true, out status atask)) // true (ignoreCase): Allows case-insensitive parsing. So "Pending", "pending", "PENDING" all work.
+        // out status atask: If successful, the parsed enum value will be stored in the variable atask
+        {
+            list.Add(new ToDoList { description = descrip, taskdetails = atask });
+        }
+        else
+        {
+            Console.WriteLine("Invalid status. Please use 'pending' or 'completed'.");
+        }
+    }
+
+    public void delete(int index) //Deletes the task at a given 1-based index.
+    {
+        if (index > 0 && index <= list.Count)
+        {
+            list.RemoveAt(index - 1);
+            Console.WriteLine("TASK DELEATED SUCCESSFULLY ");
+        }
+        else
+        {
+            Console.WriteLine("INVALID TASK NUMBER ");
+        }
+    }
+    public void markdone(string description)   // Searches for a task by description. If found, updates its status to Completed.
+    {
+        bool found = false;
+        foreach (ToDoList item in list)
+        {
+            if (item.description.Equals(description, StringComparison.OrdinalIgnoreCase))
+            { 
+                item.taskdetails = status.completed;
+                Console.WriteLine($"TASK MARKED DONE : {item.description}");
+            }
+        }
+    }
+    public void savetofile() // Simulates saving by printing the list. Prints all tasks in a "description | status" format.
+    {
+        foreach (var task in list)
+        {
+            Console.WriteLine($"{task.description}|{task.taskdetails}");
+        }
+    Console.WriteLine("TASK IS SAVED ");
+    }
+    public void display()
+    {
+        if (list.Count == 0)
+        {
+            Console.WriteLine("NO TASK FOUND ");
+        }
+        else
+        {
+            int i = 1;
+            foreach (ToDoList item in list)
+            {
+                Console.WriteLine ($"{i}. {item.description} - {item.taskdetails}");
+                i++;
+            }
+            Console.WriteLine();
+        }
+
+    }
+    public static void Main()
+    {
+        ToDoList todo = new ToDoList();
+        while (true)
+        {
+            Console.WriteLine("== TODOLIST ==");
+            Console.WriteLine("1. ADD TASK ");
+            Console.WriteLine("2.MARKDONE");
+            Console.WriteLine("3.SAVEFILE");
+            Console.WriteLine("4.DELETEFILE");
+            Console.WriteLine("5.VIEW TASK");
+            Console.WriteLine("6. EXIT ");
+            Console.Write("Enter your choice : ");
+            int choice = Convert.ToInt32(Console.ReadLine());
+            switch (choice)
+            {
+                case 1:
+                    Console.Write("Enter the description : ");
+                    string dec = Console.ReadLine();
+                    Console.Write("Enter the status :  ");
+                    string status = Console.ReadLine();
+                    todo.add(dec, status);
+                    break;
+                    case 2:
+                    Console.Write("Enter the description : ");
+                    string mark = Console.ReadLine();
+                    todo.markdone(mark);
+                    break ;
+                    case 3:
+                    Console.Write("Enter the description : ");
+                    string save = Console.ReadLine();
+                    todo.savetofile();
+                    break;
+                    case 4:
+                    Console.Write("Enter the index : ");
+                    string delete = Console.ReadLine();
+                    if (int.TryParse(Console.ReadLine(), out int index))
+                    {
+                        todo.delete(index);
+                        Console.WriteLine("Task deleted successfully.");
+                    }
+                    break;
+                case 5:
+                    todo.display();
+                    break;
+                case 6:
+                    Console.WriteLine("Thank you!");
+                    return;
+                default:
+                    Console.WriteLine("Invalid choice.");
+                    break;
+            }
+        }
+    }
+}
