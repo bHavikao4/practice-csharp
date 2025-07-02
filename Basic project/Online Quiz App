@@ -1,0 +1,94 @@
+// Question :- 04 :  Online Quiz App
+// Topics Used: Arrays, Classes, Conditional, Loops, Interface (IQuestion), DI (optional)
+// Features: Random questions, options, scoring, result calculation
+
+public interface IQuestion1
+{
+    void Askquestion();
+}
+public interface IQuestion2
+{
+    bool Checkanswer(string userAnswer);
+}
+class Question : IQuestion1, IQuestion2
+{
+    private string text;
+    private string[] options;
+    private string correctAnswer;
+
+    // Constructor renamed to avoid conflict with the class name
+    public Question(string text, string[] options, string correctAnswer)
+    {
+        this.text = text; // this.text refers to the field inside the class.
+        this.options = options;
+        this.correctAnswer = correctAnswer;
+    }
+
+    public void Askquestion()
+    {
+        Console.WriteLine(text);
+        for (int i = 0; i < options.Length; i++)
+        {
+            Console.WriteLine($"{i + 1}. {options[i]}");
+        }
+    }
+
+    public bool Checkanswer(string userAnswer)
+    {
+        return userAnswer.Equals(correctAnswer);
+    }
+}
+class Quiz
+{
+    private Question[] Questions;
+
+    public Quiz(Question[] questions) // used Constructor Injection : purpose -- This constructor injects the array of questions into the Quiz object.
+    {
+        Questions = questions;
+
+    }
+    public void Quizstart()
+    {
+        int score = 0;
+        foreach (var Q in Questions)
+        {
+            Q.Askquestion();
+            Console.WriteLine("");
+            Console.Write("ENTER YOUR ANSWER : ");
+            string userAnswer = Console.ReadLine();
+            if (Q.Checkanswer(userAnswer))
+            {
+                Console.WriteLine("** CORRECT **");
+                Console.WriteLine();
+                score++;
+            }
+
+            else
+            {
+                Console.WriteLine("!! WRONG !!");
+                Console.WriteLine();
+            }
+        }
+
+        Console.WriteLine($"YOUR SCORE : {score}/{Questions.Length}");
+        if (Questions.Length == score)
+        {
+            Console.WriteLine("@@ WELL DONE @@");
+        }
+        else
+        {
+            Console.WriteLine("## BETTER LUCK NEXT TIME ##");
+        }
+    }
+    public static void Main()
+    {
+        Question[] quest = new Question[]
+        {
+            new Question ("author of white tiger?", new string[] {"Aravind Adiga", "Amitav Ghosh","Jhumpa Lahiri", "Neel Mukherjee" },"Aravind Adiga"),
+            new Question ("Which keyword is used for inheritance in C#",new string[] { "extends", "inherits", "base", ":"},":"),
+            new Question ("sum of 4+6",new string[]{"4","10","8","5" },"10")
+        };
+        Quiz quiz = new Quiz(quest);
+        quiz.Quizstart();
+    }
+}
