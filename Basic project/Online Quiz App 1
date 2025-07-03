@@ -1,0 +1,152 @@
+public interface IQuestion1
+{
+    void Askquestion();
+}
+public interface IQuestion2
+{
+    bool Checkanswer(string userAnswer);
+}
+class Question : IQuestion1, IQuestion2  // inheritance is used 
+{
+    private string text;          // encapsulation is used 
+    private string[] options;
+    private string correctAnswer;
+
+    // Constructor renamed to avoid conflict with the class name
+    public Question(string text, string[] options, string correctAnswer)
+    {
+        this.text = text; // this.text refers to the field inside the class.
+        this.options = options;
+        this.correctAnswer = correctAnswer;
+    }
+
+    public void Askquestion()
+    {
+        Console.WriteLine(text);
+        for (int i = 0; i < options.Length; i++)
+        {
+            Console.WriteLine($"{i + 1}. {options[i]}");
+        }
+    }
+
+    public bool Checkanswer(string userAnswer)
+    {
+        return userAnswer.Equals(correctAnswer);
+    }
+}
+class Quiz
+{
+    List<Question> Questions = new List<Question>();   // list  which stores the added questions
+    public void Addques()
+    {
+        Console.Write("ENTER HOW MANY QUESTIONS DO YOU WANT TO ADD? : ");
+        int count = Convert.ToInt32(Console.ReadLine());
+        Console.WriteLine();
+        Console.WriteLine("****** ADD QUESTIONS ******");
+        Console.WriteLine();
+        for (int i = 0; i < count; i++)
+        {
+            Console.Write($"{i + 1}. ENTER THE QUESTION : ");
+            string text = Console.ReadLine();
+
+            string[] Options = new string[4];
+            for (int j = 0; j < Options.Length; j++)
+            {
+                Console.Write($"OPTION {j + 1}. ");
+                Options[j] = Console.ReadLine();
+            }
+
+            Console.Write("ENTER THE CORRECT ANSWER : ");
+            string correctAnswer = Console.ReadLine();
+            Console.WriteLine();
+
+            Questions.Add(new Question(text, Options, correctAnswer));
+        }
+    }
+
+    public void Quizstart()
+    {
+        int score = 0;
+        Console.WriteLine();
+        Console.WriteLine("****** QUIZ START ******");
+        Console.WriteLine();
+        foreach (var Q in Questions)
+        {
+            Q.Askquestion();
+            Console.WriteLine("");
+            Console.Write("ENTER YOUR ANSWER : ");
+            string userAnswer = Console.ReadLine();
+            if (Q.Checkanswer(userAnswer))
+            {
+                Console.WriteLine("** CORRECT **");
+                Console.WriteLine();
+                score++;
+            }
+
+            else
+            {
+                Console.WriteLine("!! WRONG !!");
+                Console.WriteLine();
+            }
+        }
+
+        Console.WriteLine($"YOUR SCORE : {score}/{Questions.Count}");
+        if (Questions.Count == score)
+        {
+            Console.WriteLine("@@ WELL DONE @@");
+        }
+        else
+        {
+            Console.WriteLine("?? BETTER LUCK NEXT TIME ??");
+        }
+
+    }
+    public static void Main()
+    {
+        Quiz q = new Quiz();
+        q.Addques();
+        while (true)
+        {
+            Console.WriteLine("1. YOU WANT TO ADD SOME MORE QUESTION ");
+            Console.WriteLine("2. GO TO QUIZ ");
+            Console.Write("ENTER YOUR CHOICE : ");
+            int choice = Convert.ToInt32(Console.ReadLine());
+
+            switch (choice)
+            {
+                case 1:
+                    q.Addques();
+                    break;
+                case 2:
+                    q.Quizstart();
+                    break;
+            }
+            q.Quizstart();
+
+            while (true)
+            {
+                Console.WriteLine("1. YOU WANT TO ADD SOME MORE QUESTION ");
+                Console.WriteLine("2. GO TO QUIZ ");
+                Console.WriteLine("3. EXIT  ");
+                Console.Write("ENTER YOUR CHOICE : ");
+                int choice1 = Convert.ToInt32(Console.ReadLine());
+
+                switch (choice1)
+                {
+                    case 1:
+                        q.Addques();
+                        break;
+                    case 2:
+                        q.Quizstart();
+                        break;
+                    case 3:
+                        Console.WriteLine("@@ THANK YOU @@");
+                        return;
+                    default:
+                        Console.WriteLine("!! INVALID INPUT !!");
+                        break;
+                }
+            }
+        }
+    }
+}
